@@ -65,12 +65,12 @@ const registerValidation = [
 
 router.post('/register',registerValidation,csrfProtection,asyncHandler(async(req,res,next)=>{
   const {username,email,password}=req.body;
-  const user=db.User.build({
+  const user=User.build({
     username,email
   });
   const validatorErrors=validationResult(req);
   if(validatorErrors.isEmpty()){
-    user.hashedPassword=await bcrypt.hash(password,10);
+    const hashedPassword=await bcrypt.hash(password,10);
     user.hashedPassword=hashedPassword;
     await user.save();
     //loginUser
