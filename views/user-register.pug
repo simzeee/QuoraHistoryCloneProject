@@ -1,0 +1,27 @@
+extends layout.pug 
+block content 
+  h2= title
+  include utils.pug
+  fieldset
+    form(method='post' action='/users/register')
+      div 
+        label User Name
+      div 
+        input(type='text' name='username' value=user.username)
+      div 
+        label Email 
+      div 
+        input(type='text' name='email' value=user.email)
+      div 
+        label Password 
+      div 
+        input(type='password' name='password' )
+      div 
+        label Confirm Password 
+      div 
+        input(type='password' name='confirmPassword')
+      div 
+        button(type='submit') Submit 
+        input(type='hidden' name='_csrf' value=csrfToken)
+      div 
+        p: a(href='/users/login') Already have an account?
