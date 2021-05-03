@@ -86,4 +86,8 @@ router.post('/register',registerValidation,csrfProtection,asyncHandler(async(req
   }
 }));
 
+router.get('/login',(req,res)=>{
+  res.send('hi')
+})
+
 module.exports = router;
