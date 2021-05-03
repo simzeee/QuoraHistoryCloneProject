@@ -5,7 +5,16 @@ append head
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
+  
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
+  
+  p Welcome to History Quora!
+
+  div 
+    a(href="/users/register") Register 
+  div 
+    a(href='/users/login') Login
+  form(method='post' action='/users/logout')
+    div 
+      button(type='submit') Log Out

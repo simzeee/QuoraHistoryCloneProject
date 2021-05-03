@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 router.use(cookieParser());
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'a/A Express Skeleton Home' });
+  res.render('index', { title: 'Home Page' });
 });
 
 module.exports = router;
