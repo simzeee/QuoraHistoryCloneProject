@@ -70,13 +70,13 @@ router.post('/register',registerValidation,csrfProtection,asyncHandler(async(req
   });
   const validatorErrors=validationResult(req);
   if(validatorErrors.isEmpty()){
-    const hashedPassword=await bcrypt.hash(password,10);
-    user.hashedPassword=hashedPassword;
+    const hashedPassword= await bcrypt.hash(password,10);
+    user.hashedPassword= hashedPassword;
     await user.save();
     //loginUser
     res.redirect('/');
-  }else{
-    const errors=validatorErrors.array().map((error)=>error.msg);
+  } else {
+    const errors= validatorErrors.array().map((error)=>error.msg);
     res.render('user-register',{
       title:'Register',
       user,
@@ -86,8 +86,50 @@ router.post('/register',registerValidation,csrfProtection,asyncHandler(async(req
   }
 }));
 
-router.get('/login',(req,res)=>{
-  res.send('hi')
-})
+router.get('/login', csrfProtection, asyncHandler(async(req,res)=>{
+ 
+  res.render('user-login',{
+    csrfToken:req.csrfToken(),
+    title:'Log In',
+  })
+}));
 
+const loginValidators=[
+  check('email')
+    .exists({checkFalsy:true})
+    .withMessage('Please provide valid email address'),
+  check('password')
+    .exists({checkFalsy:true})
+    .withMessage('Please provide a password'),
+];
+
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req,res,next)=>{
+    const {email,password}=req.body;
+
+    let errors=[];
+    const validatorErrors = validationResult(req);
+
+    if(validatorErrors.isEmpty()){
+      const user=await User.findOne({where:{email}});
+      if(user!==null){
+        const passwordMatch=await bcrypt.compare(password,user.hashedPassword.toString());
+
+        if(passwordMatch){
+          console.log('password matches')
+          //loginUser
+          return res.redirect('/')
+        }
+      }
+      errors.push('Login failed for the provided email address.')
+    } else {
+      errors= validatorErrors.array().map((error)=>error.msg);
+      console.log(errors)
+    }
+    res.render('user-login',{
+      title:'Log In',
+      email,
+      errors,
+      csrfToken:req.csrfToken(),
+    })
+}));
 module.exports = router;

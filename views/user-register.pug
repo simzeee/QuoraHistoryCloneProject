@@ -1,8 +1,9 @@
 extends layout.pug 
+
 block content 
-  h2= title
-  include utils.pug
+  
   fieldset
+    include utils.pug
     form(method='post' action='/users/register')
       div 
         label User Name
@@ -21,7 +22,7 @@ block content
       div 
         input(type='password' name='confirmPassword')
       div 
-        button(type='submit') Submit 
+        button(type='submit') Register
         input(type='hidden' name='_csrf' value=csrfToken)
       div 
         p: a(href='/users/login') Already have an account?
