@@ -22,8 +22,14 @@ block content
     div
       a(href='/users/login') Login
 
+  form(method='get' action='/questions')
+      button(type='submit') Add New Question
+
   each question in questions
     div
       label(name='username')= question.User.username
-      //- label(name='tags')= question.Tag.name
+    div
+      each tag in question.Tags
+        a(href=`tags/${tag.id}` name='tag')= tag.name
+    div
       p= question.content
