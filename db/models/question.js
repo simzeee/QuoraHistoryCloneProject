@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     })
     Question.belongsToMany(models.Tag, {
       through: 'QuestionTag',
-      otherKey: 'questionId',
-      foreignKey: 'tagId'
+      otherKey: 'tagId',
+      foreignKey: 'questionId'
     })
   };
   return Question;

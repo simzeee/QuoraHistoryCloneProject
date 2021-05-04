@@ -105,20 +105,19 @@ const loginValidators=[
 ];
 
 router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req,res,next)=>{
-    const {email,password}=req.body;
+    const { email, password }=req.body;
 
     let errors=[];
     const validatorErrors = validationResult(req);
 
-    if(validatorErrors.isEmpty()){
-      const user=await User.findOne({where:{email}});
-      if(user!==null){
+    if (validatorErrors.isEmpty()) {
+      const user = await User.findOne({ where: { email } });
+      if( user !== null ){
         const passwordMatch=await bcrypt.compare(password,user.hashedPassword.toString());
 
         if(passwordMatch){
-          const username=user.username;
+          const username = user.username;
           loginUser(req,res,user)
-          console.log(username)
           return res.redirect('/')
         }
       }
@@ -137,7 +136,6 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req,re
 
 router.post('/logout',(req,res)=>{
   logoutUser(req,res);
-  console.log('clicked logout')
   res.redirect('/')
 })
 module.exports = router;
