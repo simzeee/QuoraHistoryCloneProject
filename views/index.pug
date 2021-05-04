@@ -5,6 +5,7 @@ append head
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
+  script(src='/javascripts/questions.js' type='module' defer)
 
 
 block content
@@ -25,6 +26,8 @@ block content
   form(method='get' action='/questions')
       button(type='submit') Add New Question
 
+  include utils.pug
+
   each question in questions
     div
       label(name='username')= question.User.username
@@ -33,3 +36,5 @@ block content
         a(href=`tags/${tag.id}` name='tag')= tag.name
     div
       p= question.content
+      button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
+      button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
