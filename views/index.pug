@@ -5,16 +5,19 @@ append head
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
-  
+
 
 block content
-  
-  p Welcome to History Quora!
 
-  div 
-    a(href="/users/register") Register 
-  div 
-    a(href='/users/login') Login
-  form(method='post' action='/users/logout')
-    div 
-      button(type='submit') Log Out
+  if user
+    p Welcome to History Quora, #{user.username}!
+    form(method='post' action='/users/logout')
+      div
+        button(type='submit') Log Out
+
+  else
+    p Welcome to History Quora!
+    div
+      a(href="/users/register") Register
+    div
+      a(href='/users/login') Login

@@ -88,7 +88,7 @@ router.post('/register',registerValidation,csrfProtection,asyncHandler(async(req
 }));
 
 router.get('/login', csrfProtection, asyncHandler(async(req,res)=>{
- 
+
   res.render('user-login',{
     csrfToken:req.csrfToken(),
     title:'Log In',
@@ -137,7 +137,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req,re
 
 router.post('/logout',(req,res)=>{
   logoutUser(req,res);
-  
-  res.redirect('login')
+  console.log('clicked logout')
+  res.redirect('/')
 })
 module.exports = router;
