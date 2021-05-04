@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {User}=require('../db/models');
+const { User, Tag }=require('../db/models');
 const db=require('../config');
 const {csrfProtection,asyncHandler}=require('./utils');
 const bcrypt = require("bcryptjs");
@@ -10,13 +10,14 @@ const { check, validationResult } = require("express-validator");
 
 
 
-/* GET questions forms. */
+/* GET questions form. */
 router.get('/', csrfProtection, asyncHandler( async (req, res, next)=> {
-    res.render('question-submit', { csrfToken: req.csrfToken()} );
+    const tags = await Tag.findAll();
+    res.render('question-submit', { csrfToken: req.csrfToken(), tags } );
 }));
 
 router.post('/', csrfProtection, asyncHandler( async (req, res, next)=> {
-    // res.render('');
+    // const { content, tag }
 }));
 
 module.exports = router;
