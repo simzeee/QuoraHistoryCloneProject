@@ -18,6 +18,12 @@ block content
   else
     p Welcome to History Quora!
     div
-      a(href="/users/register") Register
+      a(href='/users/register') Register
     div
       a(href='/users/login') Login
+
+  each question in questions
+    div
+      label(name='username')= question.User.username
+      //- label(name='tags')= question.Tag.name
+      p= question.content

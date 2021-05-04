@@ -4,11 +4,14 @@ block content
         form(method='post' action='/questions')
             div
                 label(for='content')
-                textarea(name='content', cols='50', rows='20' type='text' required)
+                textarea(name='content', cols='100', rows='10' type='text' required)
+            div
+                label(for='tags') Select tag(s)
+                select(name='presetTags')
+                    each tag in tags
+                        option(value= tag.id )= tag.name
             //- div
-            //-     label(for='tags')
-            //-     select(name='tags')
-            //-         each tag in tags
-            //-             option(value=`${tag.id}`)= tag.name
+            //-     label(for="") Custom tag
+            //-     input(type="text" name='custom-tag')
             div
                 button(type='submit') Submit
