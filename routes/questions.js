@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { QuestionTag, Question, Tag } = require('../db/models');
+const { QuestionTag, Question, Tag, User } = require('../db/models');
 const db = require('../config');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require("express-validator");
@@ -51,5 +51,38 @@ router.post('/', csrfProtection, restoreUser, requireAuth, questionValidators, a
         });
     }
 }));
+
+router.get('/:id(\\d+)/edit', csrfProtection, restoreUser, requireAuth, asyncHandler( async (req, res) => {
+    const questionId = req.params.id;
+    const question = await Question.findByPk(questionId, { include: [User] });
+    const questionUserId = question.User.id;
+    const currentUserId = req.session.auth.userId;
+
+    if (questionUserId === currentUserId) {
+        const content = question.content;
+        const tags = await Tag.findAll();
+        res.render('question-submit', { csrfToken: req.csrfToken(), tags, content });
+    } else {
+        res.render('index', { error: ['Unable to edit other users\' questions'] })
+    }
+}));
+
+router.get('/:id(\\d+)/delete', restoreUser, requireAuth, asyncHandler( async (req, res) => {
+    const questionId = req.params.id;
+    const question = await Question.findByPk(questionId, { include: [User] });
+
+    if (question.User.id === req.session.auth.userId) {
+        const questiontags = await QuestionTag.findAll({ where: { 'questionId': questionId }});
+        questiontags.forEach(async questiontag => {
+            await questiontag.destroy();
+        });
+        await question.destroy();
+
+        res.redirect('/');
+    } else {
+        res.render('index', { error: ['Unable to delete other users\' questions'] })
+    }
+}));
+
 
 module.exports = router;
