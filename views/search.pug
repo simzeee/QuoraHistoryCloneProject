@@ -1,8 +1,8 @@
 extends layout.pug
 block content
     fieldset 
-        form(method='post' action='/search/tag')
-            input(type='hidden' name='_csrf' value=csrfToken)  
+        form(method='post' action='/search/tags')
+              
 
             div 
                 h2 Please Select From These Available Topics 
@@ -14,8 +14,9 @@ block content
             
             div 
                 button(type='submit') Search Tags
-
+                input(type='hidden' name='_csrf' value=csrfToken)
         form(method='post' action='/search/keyword')
             div 
                 input(type='text' name='searchBar' placeholder='Search...')
                 button(type='submit') Search KeyWord
+                input(type='hidden' name='_csrf' value=csrfToken)
