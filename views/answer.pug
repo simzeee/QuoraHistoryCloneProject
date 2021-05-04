@@ -1,0 +1,11 @@
+extends layout
+block content
+  fieldset
+      div 
+        h2 #{question.content}
+        form(method='post' action='/answers')
+            div
+                label(for='content')
+                textarea(name='content', cols='100', rows='10' type='text' required)
+            div
+                button(type='submit') Post Answer

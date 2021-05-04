@@ -19,7 +19,9 @@ module.exports = {
         references: { model: 'Users' }
       },
       questionId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Questions'}
       },
       createdAt: {
         allowNull: false,
