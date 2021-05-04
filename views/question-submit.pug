@@ -1,0 +1,14 @@
+extends layout.pug
+block content
+    fieldset
+        form(method='post' action='/questions')
+            div
+                label(for='content')
+                textarea(name='content', cols='50', rows='20' type='text' required)
+            //- div
+            //-     label(for='tags')
+            //-     select(name='tags')
+            //-         each tag in tags
+            //-             option(value=`${tag.id}`)= tag.name
+            div
+                button(type='submit') Submit

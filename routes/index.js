@@ -7,8 +7,16 @@ const cookieParser = require("cookie-parser");
 
 router.use(cookieParser());
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home Page' });
-});
+router.get('/', asyncHandler( async (req, res, next) => {
+  if (req.session.auth) {
+    const userId = req.session.auth.userId;
+    const user = await User.findByPk(userId);
+    res.render('index', { title: 'Home Page', user});
+
+  } else {
+    console.log('got into the main page')
+    res.render('index', { title: 'Home Page' });
+  }
+}));
 
 module.exports = router;
