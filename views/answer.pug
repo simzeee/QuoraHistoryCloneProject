@@ -17,6 +17,11 @@ block content
                     div(name= answer.User.username)= answer.User.username
                     div(name= `answer-${answer.User.username}`)
                         p= answer.content
+                    div(id=`comments-buttons-${answer.id}`)
+                        button(id=`showComments-${answer.id}` class='showComment-button') Show Comments
+                        button(id=`hideComments-${answer.id}` class='hideComment-button --hidden') Hide Comments
+                    div(class=`current-comment-container-${answer.id}`)
+                    div(class=`new-comment-container-${answer.id}`)
         form(method='post' action='/answers')
             div
                 label(for='content')

@@ -76,9 +76,6 @@ router.post('/upvote/question', asyncHandler(async(req,res)=>{
   res.render("answer", { question, questionId, answers ,questionUpvote});
 }));
 
-router.get('/upvote/answer', asyncHandler(async(req,res)=>{
 
-
-}));
 
 module.exports = router
