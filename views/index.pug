@@ -14,16 +14,16 @@ block content
     div(class='opening')
       p(class='greeting') Welcome to MyQuery, #{user.username}!
       form(method='post' action='/users/logout')
-    div
+    div(class='openingLogOut')
         button(type='submit') Log Out
 
   else
-   div(class='opening')
-    p(class='greeting') Welcome to MyQuery!
-  div(class='opening')
-    a(href='/users/register') Register
-  div(class='opening')
-    a(href='/users/login') Login
+    div(class='opening')
+      p(class='greeting') Welcome to MyQuery!
+    div(class='opening')
+      a(href='/users/register') Register
+    div(class='opening')
+      a(href='/users/login') Login
 
   form(method='get' action='/questions')
     div(class='opening')
@@ -32,9 +32,11 @@ block content
   include utils.pug
 
   each question in questions
-    div
+    div(class='userNameContainer')
+      div(class='username')
       label(name='username')= question.User.username
-    div
+    div(class='tagsContainer')
+      div(class='tags')
       each tag in question.Tags
         a(href=`tags/${tag.id}` name='tag')= tag.name
     div(class='questionsContainer')
