@@ -1,3 +1,3 @@
 window.addEventListener("load", (event)=>{
-    console.log("hello from javascript!")
+    console.log("hello from index.js!")
 })
