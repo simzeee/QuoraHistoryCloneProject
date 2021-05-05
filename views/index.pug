@@ -12,12 +12,14 @@ block content
   
   if user
     p Welcome to History Quora, #{user.username}!
+    a(href='/search') Search
     form(method='post' action='/users/logout')
       div
         button(type='submit') Log Out
 
   else
     p Welcome to History Quora!
+    a(href='/search') Search
     div
       a(href='/users/register') Register
     div

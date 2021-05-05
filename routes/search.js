@@ -33,7 +33,7 @@ router.post('/tags',csrfProtection,asyncHandler(async(req,res)=>{
         
     })
     for(let i=0;i<tags.length;i++){
-        questions.push(tags[i].Questions[0].content)
+        questions.push(tags[i].Questions[0])
     }
     // console.log(tags[0].Questions[0])
     res.render('search-result',{questions})
@@ -50,7 +50,7 @@ router.post('/keyword',csrfProtection,asyncHandler(async(req,res)=>{
     })
     let questions=[];
     for(let i=0;i<results.length;i++){
-        questions.push(results[i].content)
+        questions.push(results[i])
     }
     // console.log(results[0].content)
     res.render("search-result", { questions });
