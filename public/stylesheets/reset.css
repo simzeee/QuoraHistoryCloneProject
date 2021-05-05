@@ -1,9 +1,10 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* background-color: red; */
 }
 
-a {
+p {
   color: #00B7FF;
 }
 
@@ -25,3 +26,4 @@ body, header, nav {
 h1 {
   font-size: 2rem;
 }
+
