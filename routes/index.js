@@ -18,10 +18,10 @@ router.get('/', asyncHandler( async (req, res, next) => {
   if (req.session.authenticated) {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
-    res.render('index', { title: 'Home Page', user, questions });
+    res.render('index', { title: 'Looking Back', user, questions });
 
   } else {
-    res.render('index', { title: 'Home Page', questions});
+    res.render('index', { title: 'Looking Back', questions});
   }
 }));
 

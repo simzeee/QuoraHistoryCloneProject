@@ -11,13 +11,14 @@ append head
 block content
   
   if user
-    p Welcome to History Quora, #{user.username}!
-    form(method='post' action='/users/logout')
-      div
+    div(class='opening')
+      p(class='greeting') Welcome to MyQuery, #{user.username}!
+      form(method='post' action='/users/logout')
+    div
         button(type='submit') Log Out
 
   else
-    p Welcome to History Quora!
+    p(class='greeting') Welcome to Query!
     div
       a(href='/users/register') Register
     div
@@ -34,9 +35,10 @@ block content
     div
       each tag in question.Tags
         a(href=`tags/${tag.id}` name='tag')= tag.name
-    div
+    div(class='questionsContainer')
       a(href=`/answers/${question.id}`)
-        p= question.content
+        p(class='home-questions')= question.content
+    div(class='buttonsContainer')
       button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
       button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
       button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers

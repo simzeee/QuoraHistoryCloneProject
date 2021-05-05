@@ -1,9 +1,9 @@
-doctype html
-html
-  head
-      block head
-        title="Query"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
-  body
-    h2= title
-    block content
+head
+    block head
+      title="Query"
+      link(rel='stylesheet' href='/stylesheets/reset.css')
+body
+  div(class='header')
+  div(class='titleContainer')
+      h2(class='title')= title
+  block content
