@@ -1,9 +1,12 @@
 head
     block head
-      title="Query"
+      title="MyQuery"
       link(rel='stylesheet' href='/stylesheets/reset.css')
 body
-  div(class='header')
-  div(class='titleContainer')
+  div(class='headerOne')
+    div(class='titleContainer')
       h2(class='title')= title
+    div(class='openingLogOut')
+      form(method='post' action='/users/logout')
+        button(type='submit') Log Out  
   block content
