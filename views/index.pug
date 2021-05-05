@@ -18,13 +18,15 @@ block content
         button(type='submit') Log Out
 
   else
-    p(class='greeting') Welcome to Query!
-    div
-      a(href='/users/register') Register
-    div
-      a(href='/users/login') Login
+   div(class='opening')
+    p(class='greeting') Welcome to MyQuery!
+  div(class='opening')
+    a(href='/users/register') Register
+  div(class='opening')
+    a(href='/users/login') Login
 
   form(method='get' action='/questions')
+    div(class='opening')
       button(type='submit') Add New Question
 
   include utils.pug
