@@ -35,6 +35,8 @@ block content
       each tag in question.Tags
         a(href=`tags/${tag.id}` name='tag')= tag.name
     div
-      p= question.content
+      a(href=`/answers/${question.id}`)
+        p= question.content
       button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
       button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
+      button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers

@@ -1,11 +1,18 @@
 extends layout
 block content
   fieldset
-      div 
+      div
         h2 #{question.content}
+        div
+            each answer in answers
+                div
+                    div(name= answer.User.username)= answer.User.username
+                    div(name= `answer-${answer.User.username}`)
+                        p= answer.content
         form(method='post' action='/answers')
             div
                 label(for='content')
                 textarea(name='content', cols='100', rows='10' type='text' required)
+                input(type="hidden" name='questionId' value= questionId)
             div
                 button(type='submit') Post Answer
