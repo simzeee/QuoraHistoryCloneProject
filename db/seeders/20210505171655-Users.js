@@ -1,5 +1,6 @@
 'use strict';
 
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     /*
@@ -12,16 +13,15 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('QuestionTags', [
-      {  questionId: 1, tagId: 1, createdAt: new Date(), updatedAt: new Date() },
-      {  questionId: 2, tagId: 2, createdAt: new Date(), updatedAt: new Date() },
-      {  questionId: 3, tagId: 3, createdAt: new Date(), updatedAt: new Date() },
-    ]);
+      return queryInterface.bulkInsert('Users', [
+        {  username:'testUser', email:'testUser@gmail.com', hashedPassword:'$2a$10$kEjKglPCIsGHq4mvosqXReU0eIp5m/iadOKonTOR1/7p8fJ9P5xzi', createdAt:new Date(), updatedAt:new Date() }
+      ], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete("QuestionTags", {
+    return queryInterface.bulkDelete("Users", {
       id: { [Sequelize.Op.gt]: 0 },
     });
+   
   }
 };
