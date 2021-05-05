@@ -13,15 +13,9 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('QuestionTags', [
-<<<<<<< HEAD:db/seeders/20210504165002-questiontags.js
-      {  questionId: 1, tagId: 1, createdAt: new Date(), updatedAt: new Date() },
-      {  questionId: 2, tagId: 2, createdAt: new Date(), updatedAt: new Date() },
-      {  questionId: 3, tagId: 3, createdAt: new Date(), updatedAt: new Date() },
-=======
-      {  questionId: 1, tagId: 11, createdAt: new Date(), updatedAt: new Date() },
-      {  questionId: 2, tagId: 14, createdAt: new Date(), updatedAt: new Date() },
-      {  questionId: 3, tagId: 13, createdAt: new Date(), updatedAt: new Date() },
->>>>>>> search:db/seeders/20210504160543-questiontags.js
+      {  questionId: 4, tagId: 1, createdAt: new Date(), updatedAt: new Date() },
+      {  questionId: 5, tagId: 2, createdAt: new Date(), updatedAt: new Date() },
+      {  questionId: 6, tagId: 3, createdAt: new Date(), updatedAt: new Date() },
     ]);
   },
 

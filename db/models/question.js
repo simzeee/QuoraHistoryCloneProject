@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'tagId',
       foreignKey: 'questionId'
     })
-    Question.hasMany(models.Answer, {foreignKey: 'questionId'})
+    Question.hasMany(models.Answer, {foreignKey: 'questionId'});
+    Question.hasMany(models.Upvote, { foreignKey: "questionId" });
   };
   return Question;
 };

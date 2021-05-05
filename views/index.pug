@@ -30,7 +30,7 @@ block content
 
   include utils.pug
 
-  each question in questions
+  each question in sortedQuestions
     div
       label(name='username')= question.User.username
     div
