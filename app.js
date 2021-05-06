@@ -10,7 +10,7 @@ const session = require('express-session');
 const answersRouter = require('./routes/answers')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const searchRouter= require('./routes/search');
+
 const questionsRouter = require('./routes/questions');
 const {environment,sessionSecret} =require('./config');
 const app = express();
@@ -30,7 +30,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/questions', questionsRouter);
 app.use('/answers', answersRouter);
-app.use('/search',searchRouter);
+
 
 
 
