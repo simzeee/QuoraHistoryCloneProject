@@ -9,12 +9,33 @@ append head
 
 
 block content
+  form(method='post' action='/search/keyword')
+    div 
+      input(type='text' name='searchBar' placeholder='Search...')
+      button(type='submit') Search Keyword
+      input(type='hidden' name='_csrf' value=csrfToken)
   
   if user
+<<<<<<< HEAD
     div(class='containAll')
       div(class='opening')
         p(class='greeting') Welcome to MyQuery, #{user.username}!
 
+=======
+    p Welcome to History Quora, #{user.username}!
+    a(href='/users/userProfile') View Profile
+    form(method='post' action='/users/logout')
+      div
+        button(type='submit') Log Out
+
+  else
+    p Welcome to History Quora!
+    
+    div
+      a(href='/users/register') Register
+    div
+      a(href='/users/login') Login
+>>>>>>> d120867ce622d1854e2eed30bfbef05822da85ef
 
   else
     div(class='containAll')
@@ -32,6 +53,7 @@ block content
   include utils.pug
 
   each question in questions
+<<<<<<< HEAD
     div(class='containAll')
       div(class='questionsContainer')
         a(href=`/answers/${question.id}`)
@@ -48,3 +70,30 @@ block content
         button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
         button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
         button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
+=======
+    div
+      label(name='username')= question.User.username
+    div
+      each tag in question.Tags
+        a(href=`tags/${tag.id}` name='tag')= tag.name
+    div
+      a(href=`/answers/${question.id}`)
+        p= question.content
+      button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
+      button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
+      button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
+  div 
+    form(method='post' action='/search/tags')
+          div 
+              h2 Please Select From These Available Topics 
+          
+          each tag in Tags 
+          
+              input(type='checkbox' name=tag.name value=tag.id)
+              label= tag.name
+          
+          div 
+              button(type='submit') Search Tags
+              input(type='hidden' name='_csrf' value=csrfToken)
+    
+>>>>>>> d120867ce622d1854e2eed30bfbef05822da85ef

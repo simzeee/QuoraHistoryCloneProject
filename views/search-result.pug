@@ -2,5 +2,13 @@ extends layout.pug
 block content
   if questions
     each question in questions 
-        fieldset 
-            p= question
+      fieldset
+        a(href=`/answers/${question.id}`) 
+            p= question.content
+    div
+        a(href='/') Return to Home
+  else 
+    fieldset 
+      p No results found!
+    div
+        a(href='/') Return to Home

@@ -3,21 +3,69 @@ const router = express.Router();
 const db = require('../config');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require("express-validator");
-const { Answer, User, Question } = require('../db/models');
+const { Tag, Answer, User, Question, Comment, Upvote } = require('../db/models');
 const { restoreUser, requireAuth } = require('../auth');
 
 
-
+// :id is the question ID
 router.get('/:id', restoreUser, requireAuth, asyncHandler(async (req, res, next) => {
   const questionId = parseInt(req.params.id, 10)
-  const question = await Question.findByPk(questionId, { include: User });
+  const question = await Question.findByPk(questionId, { include: [User, Tag] });
   const answers = await Answer.findAll({
     where: { 'questionId': questionId },
     include: [User]
   });
+  const comments = await Comment.findAll({
+    where: { 'questionId': questionId },
+    include: [User]
+  });
+  const questionUpvotes = await Upvote.findAll({
+    where: { questionId },
+  });
+  const questionUpvote = { value: questionUpvotes.length };
+  res.render('answer', { question, questionId, answers, questionUpvote, comments,})
+}));
 
-  res.render('answer', { question, questionId, answers })
+// :id is the answer ID
+router.get('/:id/comments', asyncHandler(async (req, res, next) => {
+  const answerId = req.params.id;
+  console.log(answerId)
+  const answerComments = await Comment.findAll({
+    where: { 'answerId': answerId },
+    include: [User]
+  });
+  res.send(answerComments);
 }))
+
+const commentValidator = [
+  check('content')
+    .exists()
+    .withMessage('Please provide a comment')
+    .isLength({ max: 255 })
+    .withMessage('Please provide a comment less than 255 characters')
+];
+
+router.post('/:id/comments', restoreUser, requireAuth,  commentValidator, asyncHandler(async (req, res, next) => {
+  const { content } = req.body;
+  const validatorErrors = validationResult(req);
+  let errors = [];
+
+  if (validatorErrors.isEmpty()) {
+    const answerId = req.params.id;
+    const answer = await Answer.findByPk(answerId, { include: [Question] });
+    const questionId = answer.Question.id;
+    const userId = req.session.auth.userId;
+
+    await Comment.create({ content, userId, answerId, questionId });
+
+    res.redirect(`/answers/${answer.questionId}/`)
+
+  } else {
+    errors = validatorErrors.array().map((error) => error.msg);
+    console.log(errors)
+    res.redirect(`/answers/${answer.questionId}/`)
+  }
+}));
 
 answerValidators = [
   check('content')
@@ -42,6 +90,36 @@ router.post('/', restoreUser, requireAuth, answerValidators, asyncHandler(async 
 
     res.redirect('/')
   }
-}))
+}));
 
-module.exports = router
+router.post('/upvote/question', asyncHandler(async(req,res)=>{
+  const {questionId,userId}=req.body
+  const question = await Question.findByPk(questionId, {
+    include: [User, Tag],
+  });
+  const answers = await Answer.findAll({
+    where: { questionId: questionId },
+    include: [User],
+  });
+  const previousUpvote=await Upvote.findOne({
+    where:{
+      userId,questionId
+    }
+  })
+  if(previousUpvote!==null){
+    await Upvote.destroy({
+      where:{userId}
+    })
+  }else{
+    await Upvote.create({
+      userId,
+      questionId
+    })
+  };
+  const questionUpvotes=await Upvote.findAll({
+    where:{questionId}
+  });
+  const questionUpvote={value:questionUpvotes.length};
+  res.render("answer", { question, questionId, answers ,questionUpvote});
+}));
+module.exports = router;

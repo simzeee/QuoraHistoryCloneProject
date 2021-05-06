@@ -1,0 +1,17 @@
+extends layout.pug 
+
+block content 
+
+    fieldset 
+        table 
+            thead 
+                th User Name 
+                th User Email 
+            tbody 
+                tr 
+                    td= user.username 
+                    td= user.email
+    div 
+        a(href='/users/editProfile') Edit Profile 
+    div
+        a(href='/') Return to Home

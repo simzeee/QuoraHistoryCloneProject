@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "dotenv": "^8.2.0",
     "dotenv-cli": "^3.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
@@ -19,6 +18,7 @@
     "sequelize-cli": "^5.5.1"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
     "csurf": "^1.11.0",
@@ -28,6 +28,9 @@
     "morgan": "^1.10.0",
     "pg": "^8.0.0",
     "pug": "^2.0.4",
-    "sequelize": "^5.21.6"
+    "sequelize": "^5.21.6",
+    "dotenv-cli": "^3.1.0",
+    "nodemon": "^2.0.2",
+    "sequelize-cli": "^5.5.1"
   }
 }

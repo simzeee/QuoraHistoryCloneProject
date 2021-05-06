@@ -138,4 +138,23 @@ router.post('/logout',(req,res)=>{
   logoutUser(req,res);
   res.redirect('/')
 })
+
+router.get(
+  "/userProfile",
+  asyncHandler(async (req, res) => {
+    const userId = req.session.auth.userId;
+    const user = await User.findByPk(userId);
+    res.render("userProfile", { user });
+  })
+);
+
+router.get(
+  "/editProfile",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const userId = req.session.auth.userId;
+    const user = await User.findByPk(userId);
+    res.render("editProfile", { user });
+  })
+);
 module.exports = router;
