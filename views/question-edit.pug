@@ -1,0 +1,16 @@
+extends layout.pug
+block content
+    fieldset
+        include utils.pug
+        form(method='post' action=`/questions/${question.id}/edit`)
+            div
+                label(for='content')
+                textarea(name='content', cols='100', rows='10' type='text' required)= question.content
+            div
+                label(for='tag') Select tag
+                select(name='tagIds' multiple)
+                    each tag in tags
+                        option(name= tag.name value= tag.id )= tag.name
+            div
+                input(type='hidden' name='_csrf' value= csrfToken)
+                button(type='submit') Submit

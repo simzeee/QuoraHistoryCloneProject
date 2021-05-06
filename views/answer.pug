@@ -1,18 +1,35 @@
 extends layout
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  //- add page specific js
+  script(src="/javascripts/index.js" type="module" defer)
+  script(src='/javascripts/questions.js' type='module' defer)
 
 block content
+  div(class='errors-container')
+
   fieldset
-      div
-        h2 #{question.content}
-          div
-            form(method='post' action='/answers/upvote/question')  
-              span(id='question-upvote-count')= questionUpvote.value
-              input(type='hidden' name='questionId' value=question.id)
-              input(type='hidden' name='userId' value=user.id)
-              button(id=`upvote-${question.id}` type='submit'  class='upvote-question-button') 👍
+    h1 Question:
+    div
+      label(name='username')= question.User.username
+    div
+      each tag in question.Tags
+        a(href=`tags/${tag.id}` name='tag')= tag.name
+    div
+        form(method='post' action='/answers/upvote/question')
+            span(id='question-upvote-count')= questionUpvote.value
+            input(type='hidden' name='questionId' value=question.id)
+            input(type='hidden' name='userId' value=user.id)
+            button(id=`upvote-${question.id}` type='submit'  class='upvote-question-button') 👍
+    p= question.content
+
+    fieldset
+        h2 Answers:
         div
             each answer in answers
+                input#_csrf(type='hidden' name='_csrf' value= csrfToken)
                 div
                     div(name= answer.User.username)= answer.User.username
                     div(name= `answer-${answer.User.username}`)
@@ -22,14 +39,13 @@ block content
                         button(id=`hideComments-${answer.id}` class='hideComment-button --hidden') Hide Comments
                     div(class=`current-comment-container-${answer.id}`)
                     div(class=`new-comment-container-${answer.id}`)
+
         form(method='post' action='/answers')
             div
                 label(for='content')
                 textarea(name='content', cols='100', rows='10' type='text' required)
                 input(type="hidden" name='questionId' value= questionId)
-
-                
             div
                 button(type='submit') Post Answer
-            div 
+            div
                 a(href='/') Return to Home

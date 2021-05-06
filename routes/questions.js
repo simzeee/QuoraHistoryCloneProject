@@ -27,7 +27,6 @@ router.post('/', csrfProtection, restoreUser, requireAuth, questionValidators, a
     const userId = req.session.auth.userId;
     const validatorErrors = validationResult(req);
     let errors = [];
-    console.log(tagIds)
 
     if (validatorErrors.isEmpty()) {
         const newQuestion = await Question.create({ content, userId });
@@ -61,9 +60,43 @@ router.get('/:id(\\d+)/edit', csrfProtection, restoreUser, requireAuth, asyncHan
     if (questionUserId === currentUserId) {
         const content = question.content;
         const tags = await Tag.findAll();
-        res.render('question-submit', { csrfToken: req.csrfToken(), tags, content });
+        res.render('question-edit', { csrfToken: req.csrfToken(), question, tags });
     } else {
         res.render('index', { error: ['Unable to edit other users\' questions'] })
+    }
+}));
+
+router.post('/:id(\\d+)/edit', csrfProtection, restoreUser, questionValidators, requireAuth, asyncHandler( async (req, res) => {
+    let { content, tagIds } = req.body;
+    const questionId = req.params.id;
+    const question = await Question.findByPk(questionId);
+    const validatorErrors = validationResult(req);
+    let errors = [];
+    if (!Array.isArray(tagIds)) {
+        tagIds = [tagIds];
+    }
+
+    if (validatorErrors.isEmpty()) {
+        question.content = content;
+        await question.save();
+
+        const questionTags = await QuestionTag.findAll({ where: { 'questionId': questionId } });
+        questionTags.forEach(async questionTag => {
+            await questionTag.update({ questionId, tagId });
+        })
+
+        res.redirect('/')
+    } else {
+        errors = validatorErrors.array().map((error) => error.msg);
+        console.log(errors)
+
+        const tags = await Tag.findAll();
+        res.render('question-edit', {
+            csrfToken: req.csrfToken(),
+            errors,
+            question,
+            tags
+        });
     }
 }));
 
