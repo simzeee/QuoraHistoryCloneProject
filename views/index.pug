@@ -16,6 +16,12 @@ block content
       input(type='hidden' name='_csrf' value=csrfToken)
   
   if user
+<<<<<<< HEAD
+    div(class='containAll')
+      div(class='opening')
+        p(class='greeting') Welcome to MyQuery, #{user.username}!
+
+=======
     p Welcome to History Quora, #{user.username}!
     a(href='/users/userProfile') View Profile
     form(method='post' action='/users/logout')
@@ -29,13 +35,42 @@ block content
       a(href='/users/register') Register
     div
       a(href='/users/login') Login
+>>>>>>> d120867ce622d1854e2eed30bfbef05822da85ef
 
-  form(method='get' action='/questions')
-      button(type='submit') Add New Question
+  else
+    div(class='containAll')
+      div(class='opening')
+        p(class='greeting') Welcome to MyQuery!
+      div(class='opening')
+        a(href='/users/register') Register
+      div(class='opening')
+        a(href='/users/login') Login
+  div(class='containAll')
+    form(method='get' action='/questions')
+      div(class='opening')
+        button(type='submit') Ask A Question
 
   include utils.pug
 
   each question in questions
+<<<<<<< HEAD
+    div(class='containAll')
+      div(class='questionsContainer')
+        a(href=`/answers/${question.id}`)
+          p(class='home-questions')= question.content
+      div(class='tagsContainer')
+        div(class='tags')
+          p(class='tag') Tags: 
+        each tag in question.Tags
+          a(href=`tags/${tag.id}` name='tag')= tag.name
+      div(class='userNameContainer')
+        div(class='username')
+          label(name='username')= question.User.username
+      div(class='buttonsContainer')
+        button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
+        button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
+        button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
+=======
     div
       label(name='username')= question.User.username
     div
@@ -61,3 +96,4 @@ block content
               button(type='submit') Search Tags
               input(type='hidden' name='_csrf' value=csrfToken)
     
+>>>>>>> d120867ce622d1854e2eed30bfbef05822da85ef
