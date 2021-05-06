@@ -28,10 +28,10 @@ router.get('/', csrfProtection,asyncHandler( async (req, res, next) => {
   if (req.session.authenticated) {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
-    res.render('index', { title: 'Home Page', user, questions, Tags });
+    res.render('index', { title: 'Quriouser', user, questions, Tags });
 
   } else {
-    res.render('index', { title: 'Home Page', questions, Tags, csrfToken:req.csrfToken(),});
+    res.render('index', { title: 'Quriouser', questions, Tags, csrfToken:req.csrfToken(),});
   }
 }));
 

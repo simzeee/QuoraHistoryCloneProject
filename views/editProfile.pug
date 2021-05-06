@@ -3,15 +3,11 @@ extends layout.pug
 block content 
 
     fieldset 
-      form(method='post' )
+      form(method='post' action='/users/editProfile')
         div 
             label User Name 
         div 
-            input(type='text' name='userName' placeholder= user.username value= user.username)
-        div 
-            label Email Address 
-        div 
-            input(type='text' name='email' placeholder= user.email value= user.email)
+            input(type='text' name='username' placeholder= user.username value= user.username)
         div 
             label Old Password
         div 
@@ -22,5 +18,6 @@ block content
             input(type='password' name='newPassword')
         div 
             button(type='submit') Update 
+            input(type='hidden' name='_csrf' value=csrfToken)
       form(action='/users/userProfile')
         button(type='submit') Cancel
