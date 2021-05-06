@@ -5,5 +5,10 @@ block content
       fieldset
         a(href=`/answers/${question.id}`) 
             p= question.content
-      div
+    div
+        a(href='/') Return to Home
+  else 
+    fieldset 
+      p No results found!
+    div
         a(href='/') Return to Home

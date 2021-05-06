@@ -47,17 +47,17 @@ block content
       button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
       button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
       button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
-    div 
-      form(method='post' action='/search/tags')
-            div 
-                h2 Please Select From These Available Topics 
-            
-            each tag in Tags 
-            
-                input(type='checkbox' name=tag.name value=tag.id)
-                label= tag.name
-            
-            div 
-                button(type='submit') Search Tags
-                input(type='hidden' name='_csrf' value=csrfToken)
-      
+  div 
+    form(method='post' action='/search/tags')
+          div 
+              h2 Please Select From These Available Topics 
+          
+          each tag in Tags 
+          
+              input(type='checkbox' name=tag.name value=tag.id)
+              label= tag.name
+          
+          div 
+              button(type='submit') Search Tags
+              input(type='hidden' name='_csrf' value=csrfToken)
+    
