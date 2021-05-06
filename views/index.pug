@@ -11,32 +11,40 @@ append head
 block content
   
   if user
-    p Welcome to History Quora, #{user.username}!
-    form(method='post' action='/users/logout')
-      div
-        button(type='submit') Log Out
+    div(class='containAll')
+      div(class='opening')
+        p(class='greeting') Welcome to MyQuery, #{user.username}!
+
 
   else
-    p Welcome to History Quora!
-    div
-      a(href='/users/register') Register
-    div
-      a(href='/users/login') Login
-
-  form(method='get' action='/questions')
-      button(type='submit') Add New Question
+    div(class='containAll')
+      div(class='opening')
+        p(class='greeting') Welcome to MyQuery!
+      div(class='opening')
+        a(href='/users/register') Register
+      div(class='opening')
+        a(href='/users/login') Login
+  div(class='containAll')
+    form(method='get' action='/questions')
+      div(class='opening')
+        button(type='submit') Ask A Question
 
   include utils.pug
 
   each question in questions
-    div
-      label(name='username')= question.User.username
-    div
-      each tag in question.Tags
-        a(href=`tags/${tag.id}` name='tag')= tag.name
-    div
-      a(href=`/answers/${question.id}`)
-        p= question.content
-      button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
-      button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
-      button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
+    div(class='containAll')
+      div(class='questionsContainer')
+        a(href=`/answers/${question.id}`)
+          p(class='home-questions')= question.content
+      div(class='tagsContainer')
+        div(class='tags')
+          p(class='tag') Tags: 
+        each tag in question.Tags
+          a(href=`tags/${tag.id}` name='tag')= tag.name
+      div(class='userNameContainer')
+        div(class='username')
+          label(name='username')= question.User.username
+      div(class='buttonsContainer')
+        button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
+        button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
+        button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
