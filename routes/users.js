@@ -10,6 +10,7 @@ const { restoreUser, requireAuth } = require('../auth');
 
 
 
+
 /* GET users listing. */
 router.get('/register',csrfProtection, asyncHandler(async(req, res, next)=> {
   const user=User.build();
@@ -193,19 +194,32 @@ const updatePasswordValidation = [
 ];
 router.post(
   "/editUserName",
-  updatePasswordValidation,
   csrfProtection,
+  restoreUser,
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const userId = req.session.auth.userId;
+    const user = await User.findByPk(userId);
+    const { username } = req.body;
+    await user.update({ username });
+    res.render("userProfile", { user });
+    
+  })
+);
+router.post(
+  "/editPassword",
+  csrfProtection,
+  restoreUser,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
     const { password, newPassword } = req.body;
-    console.log(userId, password, newPassword);
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+    user.update({
+      hashedPassword:hashedNewPassword
+    });
+    res.render("userProfile", { user });
   })
 );
-router.post('/editPassword',updatePasswordValidation,csrfProtection,asyncHandler(async(req,res)=>{
-  const userId = req.session.auth.userId;
-  const user = await User.findByPk(userId);
-  const {password, newPassword}=req.body
-  console.log(userId,password,newPassword)
-}))
 module.exports = router;
