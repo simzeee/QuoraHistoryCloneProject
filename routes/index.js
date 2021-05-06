@@ -56,8 +56,11 @@ router.post("/search/tags",csrfProtection,asyncHandler(async (req, res) => {
     const questions=unfilteredQuestions.filter(question=>{
       if (question){return question}
     })
-    
-    res.render("search-result", { questions ,csrfToken:req.csrfToken(),});
+    if(questions.length){
+      res.render("search-result", { questions ,csrfToken:req.csrfToken(),});
+    }else{
+      res.render("search-result", { csrfToken: req.csrfToken() });
+    }
   })
 );
 
@@ -77,8 +80,9 @@ router.post(
     for (let i = 0; i < results.length; i++) {
       questions.push(results[i]);
     }
-    // console.log(results[0].content)
+    
     res.render("search-result", { questions, csrfToken: req.csrfToken(), });
   })
 );
+
 module.exports = router;
