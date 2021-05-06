@@ -38,20 +38,25 @@ router.get('/', csrfProtection,asyncHandler( async (req, res, next) => {
 router.post("/search/tags",csrfProtection,asyncHandler(async (req, res) => {
     const result = req.body;
     let id = [];
-    let questions = [];
+    let unfilteredQuestions = [];
     const vals = Object.values(result);
     for (let i = 0; i < vals.length - 1; i++) {
       id.push(parseInt(vals[i]));
     }
-    
+  
     let tags = await Tag.findAll({
       where: { id: [...id] },
       include: Question,
     });
     for (let i = 0; i < tags.length; i++) {
-      questions.push(tags[i].Questions[0]);
-    }
-    // console.log(tags[0].Questions[0])
+      if(tags[i].Questions){
+        unfilteredQuestions.push(tags[i].Questions[0]);
+      }else{return}
+    };
+    const questions=unfilteredQuestions.filter(question=>{
+      if (question){return question}
+    })
+    
     res.render("search-result", { questions ,csrfToken:req.csrfToken(),});
   })
 );
