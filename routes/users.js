@@ -148,13 +148,24 @@ router.get(
   })
 );
 
-router.get(
-  "/editProfile",
-  csrfProtection,
+router.get("/editProfile",csrfProtection,
   asyncHandler(async (req, res) => {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
-    res.render("editProfile", { user });
+    res.render("editProfile", { user,csrfToken:req.csrfToken() });
   })
 );
+
+const updateProfileValidation = [
+  check("username")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter User Name")
+    .isLength({ max: 50 })
+    .withMessage("Please provide a User Name no longer than 50 characters"),
+  
+];
+
+router.post('/editProfile',csrfProtection,asyncHandler(async(req,res)=>{
+
+}))
 module.exports = router;
