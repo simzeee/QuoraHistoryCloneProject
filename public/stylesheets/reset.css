@@ -12,6 +12,45 @@ body {
   align-items: center;
 }
 
+.huh{
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  position: absolute;
+  margin-left: 70%;
+  margin-top: 10.5%;
+  /* padding: 10%; */
+  width: 27%;
+  height: auto;
+  /* background-color: #3d84b8; */
+  /* background-image: url(/images/scroll.jpg) */
+}
+
+.searchContainer{
+  width: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: wrap;
+  margin-top: 10px;
+  margin-left: 10px;
+  /* margin-bottom: 10px; */
+}
+
+.searchContainer2{
+  width: auto;
+  display: flex;
+  justify-content: left;
+  flex-direction: wrap;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.searchTagsContainer{
+  display: flex;
+  flex-direction: column;
+}
+
 a{
   color: white;
 }
@@ -24,6 +63,8 @@ a{
   height: 100px;
   margin: 10px;
   background-color: #3d84b8;
+  background-image: url(/images/pyramid.jpg)
+
 }
 
 
@@ -38,7 +79,8 @@ a{
   border-radius: 25px;
   /* box-shadow: grey; */
   /* align-items: center; */
-  
+  background-image: url(/images/scroll.jpg)
+
 }
 
 .opening{

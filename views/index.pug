@@ -9,6 +9,20 @@ append head
 
 
 block content
+  div(class='huh')
+    div(class='searchContainer') 
+      form(method='post' action='/search/tags')
+            div(class='searchContainer')  
+                h2 Please Select From These Available Topics 
+            
+            each tag in Tags 
+                div(class='searchContainer2')
+                  input(type='checkbox' name=tag.name value=tag.id)
+                  label= tag.name
+            
+            div(class='searchContainer2')
+                button(type='submit') Search Tags
+                input(type='hidden' name='_csrf' value=csrfToken)  
   form(method='post' action='/search/keyword')
     div 
       input(type='text' name='searchBar' placeholder='Search...')
@@ -56,17 +70,17 @@ block content
         button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
         button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
    
-  div 
-    form(method='post' action='/search/tags')
-          div 
-              h2 Please Select From These Available Topics 
+  //- div 
+  //-   form(method='post' action='/search/tags')
+  //-         div 
+  //-             h2 Please Select From These Available Topics 
           
-          each tag in Tags 
+  //-         each tag in Tags 
           
-              input(type='checkbox' name=tag.name value=tag.id)
-              label= tag.name
+  //-             input(type='checkbox' name=tag.name value=tag.id)
+  //-             label= tag.name
           
-          div 
-              button(type='submit') Search Tags
-              input(type='hidden' name='_csrf' value=csrfToken)
+  //-         div 
+  //-             button(type='submit') Search Tags
+  //-             input(type='hidden' name='_csrf' value=csrfToken)
     
