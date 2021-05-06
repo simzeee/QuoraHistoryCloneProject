@@ -1,0 +1,26 @@
+extends layout.pug 
+
+block content 
+
+    fieldset 
+      form(method='post' )
+        div 
+            label User Name 
+        div 
+            input(type='text' name='userName' placeholder= user.username value= user.username)
+        div 
+            label Email Address 
+        div 
+            input(type='text' name='email' placeholder= user.email value= user.email)
+        div 
+            label Old Password
+        div 
+            input(type='password' name='password' )
+        div 
+            label New Password
+        div 
+            input(type='password' name='newPassword')
+        div 
+            button(type='submit') Update 
+      form(action='/users/userProfile')
+        button(type='submit') Cancel
