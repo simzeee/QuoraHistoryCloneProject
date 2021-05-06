@@ -4,10 +4,10 @@ const { User, Question, Tag, QuestionTag, Upvote } = require("../db/models");
 const { db } = require("../config");
 const { csrfProtection, asyncHandler } = require("./utils");
 const cookieParser = require("cookie-parser");
-
+const { Op } = require("sequelize");
 router.use(cookieParser());
 /* GET home page. */
-router.get('/', asyncHandler( async (req, res, next) => {
+router.get('/', csrfProtection,asyncHandler( async (req, res, next) => {
   const questions = await Question.findAll({
     include: [ User, {
       model: Tag,
@@ -24,15 +24,56 @@ router.get('/', asyncHandler( async (req, res, next) => {
   questions.sort((a,b)=>{
     return b.upvotes-a.upvotes
   })
-  console.log(questions.length)
+  const Tags = await Tag.findAll();
   if (req.session.authenticated) {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
-    res.render('index', { title: 'Home Page', user, questions });
+    res.render('index', { title: 'Home Page', user, questions, Tags });
 
   } else {
-    res.render('index', { title: 'Home Page', questions});
+    res.render('index', { title: 'Home Page', questions, Tags,csrfToken:req.csrfToken(),});
   }
 }));
 
+router.post("/search/tags",csrfProtection,asyncHandler(async (req, res) => {
+    const result = req.body;
+    let id = [];
+    let questions = [];
+    const vals = Object.values(result);
+    for (let i = 0; i < vals.length - 1; i++) {
+      id.push(parseInt(vals[i]));
+    }
+    
+    let tags = await Tag.findAll({
+      where: { id: [...id] },
+      include: Question,
+    });
+    for (let i = 0; i < tags.length; i++) {
+      questions.push(tags[i].Questions[0]);
+    }
+    // console.log(tags[0].Questions[0])
+    res.render("search-result", { questions ,csrfToken:req.csrfToken(),});
+  })
+);
+
+router.post(
+  "/search/keyword",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const { searchBar } = req.body;
+    const results = await Question.findAll({
+      where: {
+        content: {
+          [Op.substring]: searchBar,
+        },
+      },
+    });
+    let questions = [];
+    for (let i = 0; i < results.length; i++) {
+      questions.push(results[i]);
+    }
+    // console.log(results[0].content)
+    res.render("search-result", { questions, csrfToken: req.csrfToken(), });
+  })
+);
 module.exports = router;
