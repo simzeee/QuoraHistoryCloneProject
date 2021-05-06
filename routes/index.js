@@ -81,4 +81,7 @@ router.post(
     res.render("search-result", { questions, csrfToken: req.csrfToken(), });
   })
 );
+
+
+
 module.exports = router;
