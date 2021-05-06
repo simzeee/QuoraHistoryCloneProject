@@ -199,6 +199,19 @@ router.get('/:id(\\d+)/delete', restoreUser,csrfProtection, requireAuth, asyncHa
         
     }
 }));
-
+router.get("/tags/:id",asyncHandler(async (req, res, next) => {
+  const tagId = req.params.id;
+  const results = await Tag.findAll({
+    where: {
+      id: tagId},
+      include: Question,
+    },
+  );
+  let questions=[];
+  for (let i = 0; i < results.length; i++) {
+      questions.push(results[i].Questions[0]);
+  }
+  res.render("search-result", { questions });
+}));
 
 module.exports = router;

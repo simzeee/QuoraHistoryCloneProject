@@ -14,8 +14,9 @@ block content
       input(type='text' name='searchBar' placeholder='Search...')
       button(type='submit') Search Keyword
       input(type='hidden' name='_csrf' value=csrfToken)
-  a(href='/users/userProfile' class='containAll') View Profile
+  
   if user
+    a(href='/users/userProfile' class='containAll') View Profile
     div(class='containAll')
       div(class='opening')
         p(class='greeting') Welcome to MyQuery, #{user.username}!
@@ -46,7 +47,7 @@ block content
         div(class='tags')
           p(class='tag') Tags: 
         each tag in question.Tags
-          a(href=`tags/${tag.id}` name='tag')= tag.name
+          a(href=`/questions/tags/${tag.id}` name='tag')= tag.name
       div(class='userNameContainer')
         div(class='username')
           label(name='username')= question.User.username

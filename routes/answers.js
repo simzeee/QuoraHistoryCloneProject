@@ -122,4 +122,6 @@ router.post('/upvote/question', asyncHandler(async(req,res)=>{
   const questionUpvote={value:questionUpvotes.length};
   res.render("answer", { question, questionId, answers ,questionUpvote});
 }));
+
+
 module.exports = router;
