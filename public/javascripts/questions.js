@@ -47,9 +47,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
         showCommentsButton.addEventListener('click', async (e) => {
             e.preventDefault();
 
+            console.log('test')
             // pull SQL serial id from the element ID
             const answerId = showCommentsButton.id.split('-')[1];
-            const csrfToken = document.getElementById('_csrf').value;
+
 
             try {
                 const answerComments = await fetch(`http://localhost:8080/answers/${answerId}/comments`)
@@ -60,22 +61,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 const json = await answerComments.json();
 
+                if (json.length) {
+                    const commentsDiv = document.querySelector(`.current-comment-container-${answerId}`);
+                    console.log(json)
+                    json.forEach(comment => {
+                        const commentDiv = document.createElement('div');
+                        const usernameDiv = document.createElement('div');
+                        const contentDiv = document.createElement('div');
+                        usernameDiv.innerHTML = comment.User.username;
+                        contentDiv.innerHTML = comment.content;
 
-                // append the comments as divs to the answer div
-                const commentsDiv = document.querySelector(`.current-comment-container-${answerId}`);
-
-                console.log(json)
-                json.answerComments.forEach(comment => {
-                    const commentDiv = document.createElement('div');
-                    const usernameDiv = document.createElement('div');
-                    const contentDiv = document.createElement('div');
-                    usernameDiv.innerHTML = comment.User.username;
-                    contentDiv.innerHTML = comment.content;
-
-                    commentDiv.appendChild(usernameDiv);
-                    commentDiv.appendChild(contentDiv);
-                    commentsDiv.appendChild(commentDiv);
-                });
+                        commentDiv.appendChild(usernameDiv);
+                        commentDiv.appendChild(contentDiv);
+                        commentsDiv.appendChild(commentDiv);
+                    });
+                }
 
                 // add a textbox where user can add a comment
                 const newCommentForm = document.createElement('form');
@@ -87,8 +87,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 const newCommentToken = document.createElement('input');
                 newCommentToken.setAttribute('type', 'hidden');
-                newCommentToken.setAttribute('value', `${csrfToken}`);
-                newCommentToken.setAttribute('name', '_csrf');
 
                 const newCommentButton = document.createElement('button');
                 newCommentButton.setAttribute('type', 'submit');

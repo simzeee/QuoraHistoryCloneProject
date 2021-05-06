@@ -38,7 +38,7 @@ a{
   border-radius: 25px;
   /* box-shadow: grey; */
   /* align-items: center; */
-  
+
 }
 
 .opening{
@@ -46,7 +46,7 @@ a{
   display: flex;
   align-content: center;
   justify-content: center;
-  /* align-items: center; */ 
+  /* align-items: center; */
 }
 
 .greeting {
@@ -196,6 +196,25 @@ input{
   justify-content: center;
   color: #344fa1;
   margin-bottom: 3px;
+}
+
+.new-comment-container{
+  display: flex;
+  overflow: visible;
+}
+
+.current-comment-container{
+  display: flex;
+  overflow: visible;
+}
+
+#question{
+  display: flex;
+}
+
+#answers{
+  display: flex;
+  overflow: visible;
 }
 
 /* .form{

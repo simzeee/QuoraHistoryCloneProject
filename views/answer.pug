@@ -9,8 +9,6 @@ append head
 
 block content
   div(class='errors-container')
-
-  fieldset
     h1 Question:
     div
       label(name='username')= question.User.username
@@ -25,11 +23,11 @@ block content
             button(id=`upvote-${question.id}` type='submit'  class='upvote-question-button') 👍
     p= question.content
 
-    fieldset
+    fieldset#answers
         h2 Answers:
         div
             each answer in answers
-               
+
                 div
                     div(name= answer.User.username)= answer.User.username
                     div(name= `answer-${answer.User.username}`)
@@ -39,13 +37,13 @@ block content
                         button(id=`hideComments-${answer.id}` class='hideComment-button --hidden') Hide Comments
                     div(class=`current-comment-container-${answer.id}`)
                     div(class=`new-comment-container-${answer.id}`)
-
-        form(method='post' action='/answers')
             div
-                label(for='content')
-                textarea(name='content', cols='100', rows='10' type='text' required)
-                input(type="hidden" name='questionId' value= questionId)
-            div
-                button(type='submit') Post Answer
-            div
-                a(href='/') Return to Home
+                form(method='post' action='/answers')
+                    div
+                        label(for='content')
+                        textarea(name='content', cols='100', rows='10' type='text' required)
+                        input(type="hidden" name='questionId' value= questionId)
+                    div
+                        button(type='submit') Post Answer
+                    div
+                        a(href='/') Return to Home
