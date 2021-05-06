@@ -6,6 +6,7 @@ const {csrfProtection,asyncHandler}=require('./utils');
 const bcrypt = require("bcryptjs");
 const {loginUser,logoutUser}=require('../auth');
 const { check, validationResult } = require("express-validator");
+const { restoreUser, requireAuth } = require('../auth');
 
 
 
@@ -141,6 +142,8 @@ router.post('/logout',(req,res)=>{
 
 router.get(
   "/userProfile",
+  restoreUser,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
@@ -148,24 +151,75 @@ router.get(
   })
 );
 
-router.get("/editProfile",csrfProtection,
+router.get(
+  "/editUserName",
+  csrfProtection,
+  restoreUser,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
-    res.render("editProfile", { user,csrfToken:req.csrfToken() });
+    res.render("editUserName", { user, csrfToken: req.csrfToken() });
   })
 );
 
-const updateProfileValidation = [
+router.get(
+  "/editPassword",
+  csrfProtection,
+  restoreUser,
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const userId = req.session.auth.userId;
+    const user = await User.findByPk(userId);
+    res.render("editPassword", { user, csrfToken: req.csrfToken() });
+  })
+);
+const updateUserNameValidation = [
   check("username")
     .exists({ checkFalsy: true })
     .withMessage("Please enter User Name")
     .isLength({ max: 50 })
     .withMessage("Please provide a User Name no longer than 50 characters"),
-  
 ];
-
-router.post('/editProfile',csrfProtection,asyncHandler(async(req,res)=>{
-
-}))
+const updatePasswordValidation = [
+  check("newPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a password")
+    .isLength({ max: 50 })
+    .withMessage("Please provide a password no longer than 50 characters")
+    .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])/, "g")
+    .withMessage(
+      "Please include a lowercase letter, uppercase letter, number, and special character"
+    ),
+];
+router.post(
+  "/editUserName",
+  csrfProtection,
+  restoreUser,
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const userId = req.session.auth.userId;
+    const user = await User.findByPk(userId);
+    const { username } = req.body;
+    await user.update({ username });
+    res.render("userProfile", { user });
+    
+  })
+);
+router.post(
+  "/editPassword",
+  csrfProtection,
+  restoreUser,
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const userId = req.session.auth.userId;
+    const user = await User.findByPk(userId);
+    const { password, newPassword } = req.body;
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+    user.update({
+      hashedPassword:hashedNewPassword
+    });
+    res.render("userProfile", { user });
+  })
+);
 module.exports = router;
