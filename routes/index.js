@@ -31,7 +31,7 @@ router.get('/', csrfProtection,asyncHandler( async (req, res, next) => {
     res.render('index', { title: 'Home Page', user, questions, Tags });
 
   } else {
-    res.render('index', { title: 'Home Page', questions, Tags,csrfToken:req.csrfToken(),});
+    res.render('index', { title: 'Home Page', questions, Tags, csrfToken:req.csrfToken(),});
   }
 }));
 

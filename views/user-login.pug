@@ -3,18 +3,18 @@ block content
   
   fieldset
     include utils.pug
-    form(method='post' action='/users/login')
-      div 
-        label Email Address 
-      div 
-        input(type='text' name='email')
-      div 
-        label Password 
-      div 
-        input(type='password' name='password')
-      div 
-        button(type='submit') Login
-        input(type='hidden' name='_csrf' value=csrfToken)
-      div 
-        div 
-          p: a(href='/users/register') Don't have an account yet?
+    div(class='login')  
+      form(method='post' action='/users/login' class='form')
+        div(class='email') 
+          label Email Address 
+        div(class='input') 
+          input(type='text' name='email')
+        div(class='password') 
+          label(class='registerText') Password 
+        div(class='input') 
+          input(type='password' name='password')
+        div(class='input')  
+          button(type='submit') Login
+          input(type='hidden' name='_csrf' value=csrfToken)
+        div(class='registerText') 
+            p: a(href='/users/register' class='registerText') Don't have an account yet?
