@@ -8,7 +8,7 @@ const { restoreUser, requireAuth } = require('../auth');
 
 
 // :id is the question ID
-router.get('/:id', restoreUser, requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
+router.get('/:id', restoreUser, requireAuth, asyncHandler(async (req, res, next) => {
   const questionId = parseInt(req.params.id, 10)
   const question = await Question.findByPk(questionId, { include: [User, Tag] });
   const answers = await Answer.findAll({
@@ -23,8 +23,8 @@ router.get('/:id', restoreUser, requireAuth, csrfProtection, asyncHandler(async 
     where: { questionId },
   });
   const questionUpvote = { value: questionUpvotes.length };
-  res.render('answer', { question, questionId, answers, questionUpvote, comments, csrfToken: req.csrfToken() })
-}))
+  res.render('answer', { question, questionId, answers, questionUpvote, comments,})
+}));
 
 // :id is the answer ID
 router.get('/:id/comments', asyncHandler(async (req, res, next) => {
@@ -45,7 +45,7 @@ const commentValidator = [
     .withMessage('Please provide a comment less than 255 characters')
 ];
 
-router.post('/:id/comments', restoreUser, requireAuth, csrfProtection, commentValidator, asyncHandler(async (req, res, next) => {
+router.post('/:id/comments', restoreUser, requireAuth,  commentValidator, asyncHandler(async (req, res, next) => {
   const { content } = req.body;
   const validatorErrors = validationResult(req);
   let errors = [];
@@ -65,7 +65,7 @@ router.post('/:id/comments', restoreUser, requireAuth, csrfProtection, commentVa
     console.log(errors)
     res.redirect(`/answers/${answer.questionId}/`)
   }
-}))
+}));
 
 answerValidators = [
   check('content')
@@ -90,11 +90,13 @@ router.post('/', restoreUser, requireAuth, answerValidators, asyncHandler(async 
 
     res.redirect('/')
   }
-}))
+}));
 
 router.post('/upvote/question', asyncHandler(async(req,res)=>{
   const {questionId,userId}=req.body
-  const question = await Question.findByPk(questionId, { include: User });
+  const question = await Question.findByPk(questionId, {
+    include: [User, Tag],
+  });
   const answers = await Answer.findAll({
     where: { questionId: questionId },
     include: [User],
@@ -120,6 +122,4 @@ router.post('/upvote/question', asyncHandler(async(req,res)=>{
   const questionUpvote={value:questionUpvotes.length};
   res.render("answer", { question, questionId, answers ,questionUpvote});
 }));
-​
-
-module.exports = router
+module.exports = router;

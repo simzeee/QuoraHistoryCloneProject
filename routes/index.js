@@ -21,27 +21,17 @@ router.get('/', asyncHandler( async (req, res, next) => {
     question.upvotes=upvoteCount.length;
     upvoteCounts.push(upvoteCount.length);
   }
-  let sortedQuestions=[];
-  let max=questions.shift();
-  while(questions.length){
-    const current=questions.shift();
-    if(current.upvotes>max.upvotes){
-      sortedQuestions.push(current)
-    }else{
-      sortedQuestions.push(max);
-      max=current
-    }
-    if(questions.length){continue}
-    else{sortedQuestions.push(current)}
-  }
-  
+  questions.sort((a,b)=>{
+    return b.upvotes-a.upvotes
+  })
+  console.log(questions.length)
   if (req.session.authenticated) {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
-    res.render('index', { title: 'Home Page', user, sortedQuestions });
+    res.render('index', { title: 'Home Page', user, questions });
 
   } else {
-    res.render('index', { title: 'Home Page', sortedQuestions});
+    res.render('index', { title: 'Home Page', questions});
   }
 }));
 

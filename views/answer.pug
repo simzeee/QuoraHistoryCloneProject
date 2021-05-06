@@ -29,7 +29,7 @@ block content
         h2 Answers:
         div
             each answer in answers
-                input#_csrf(type='hidden' name='_csrf' value= csrfToken)
+               
                 div
                     div(name= answer.User.username)= answer.User.username
                     div(name= `answer-${answer.User.username}`)
