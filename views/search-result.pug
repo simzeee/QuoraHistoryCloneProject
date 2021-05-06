@@ -1,0 +1,7 @@
+extends layout.pug
+block content
+  if questions
+    each question in questions 
+      fieldset
+        a(href=`/answers/${question.id}`) 
+            p= question.content

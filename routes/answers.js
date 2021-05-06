@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../config');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require("express-validator");
-const { Tag, Answer, User, Question, Comment } = require('../db/models');
+const { Tag, Answer, User, Question, Comment, Upvote } = require('../db/models');
 const { restoreUser, requireAuth } = require('../auth');
 
 
@@ -19,8 +19,11 @@ router.get('/:id', restoreUser, requireAuth, csrfProtection, asyncHandler(async 
     where: { 'questionId': questionId },
     include: [User]
   });
-
-  res.render('answer', { question, questionId, answers, comments, csrfToken: req.csrfToken() })
+  const questionUpvotes = await Upvote.findAll({
+    where: { questionId },
+  });
+  const questionUpvote = { value: questionUpvotes.length };
+  res.render('answer', { question, questionId, answers, questionUpvote, comments, csrfToken: req.csrfToken() })
 }))
 
 // :id is the answer ID
@@ -31,7 +34,7 @@ router.get('/:id/comments', asyncHandler(async (req, res, next) => {
     where: { 'answerId': answerId },
     include: [User]
   });
-  res.send({ answerComments, User });
+  res.send(answerComments);
 }))
 
 const commentValidator = [
@@ -88,5 +91,35 @@ router.post('/', restoreUser, requireAuth, answerValidators, asyncHandler(async 
     res.redirect('/')
   }
 }))
+
+router.post('/upvote/question', asyncHandler(async(req,res)=>{
+  const {questionId,userId}=req.body
+  const question = await Question.findByPk(questionId, { include: User });
+  const answers = await Answer.findAll({
+    where: { questionId: questionId },
+    include: [User],
+  });
+  const previousUpvote=await Upvote.findOne({
+    where:{
+      userId,questionId
+    }
+  })
+  if(previousUpvote!==null){
+    await Upvote.destroy({
+      where:{userId}
+    })
+  }else{
+    await Upvote.create({
+      userId,
+      questionId
+    })
+  };
+  const questionUpvotes=await Upvote.findAll({
+    where:{questionId}
+  });
+  const questionUpvote={value:questionUpvotes.length};
+  res.render("answer", { question, questionId, answers ,questionUpvote});
+}));
+​
 
 module.exports = router

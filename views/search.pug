@@ -1,0 +1,22 @@
+extends layout.pug
+block content
+    fieldset 
+        form(method='post' action='/search/tags')
+              
+
+            div 
+                h2 Please Select From These Available Topics 
+            
+            each tag in Tags 
+            
+                input(type='checkbox' name=tag.name value=tag.id)
+                label= tag.name
+            
+            div 
+                button(type='submit') Search Tags
+                input(type='hidden' name='_csrf' value=csrfToken)
+        form(method='post' action='/search/keyword')
+            div 
+                input(type='text' name='searchBar' placeholder='Search...')
+                button(type='submit') Search Keyword
+                input(type='hidden' name='_csrf' value=csrfToken)

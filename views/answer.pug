@@ -9,6 +9,7 @@ append head
 
 block content
   div(class='errors-container')
+
   fieldset
     h1 Question:
     div
@@ -16,7 +17,14 @@ block content
     div
       each tag in question.Tags
         a(href=`tags/${tag.id}` name='tag')= tag.name
+    div
+        form(method='post' action='/answers/upvote/question')
+            span(id='question-upvote-count')= questionUpvote.value
+            input(type='hidden' name='questionId' value=question.id)
+            input(type='hidden' name='userId' value=user.id)
+            button(id=`upvote-${question.id}` type='submit'  class='upvote-question-button') 👍
     p= question.content
+
     fieldset
         h2 Answers:
         div
@@ -36,6 +44,8 @@ block content
             div
                 label(for='content')
                 textarea(name='content', cols='100', rows='10' type='text' required)
-                input(type='hidden' name='questionId' value= questionId)
+                input(type="hidden" name='questionId' value= questionId)
             div
                 button(type='submit') Post Answer
+            div
+                a(href='/') Return to Home
