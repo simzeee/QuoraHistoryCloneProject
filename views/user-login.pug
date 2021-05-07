@@ -1,9 +1,9 @@
 extends layout.pug 
 block content 
   
-  fieldset
+  fieldset(class='containAll')
     include utils.pug
-    div(class='login')  
+    div  
       form(method='post' action='/users/login' class='form')
         div(class='email') 
           label Email Address 

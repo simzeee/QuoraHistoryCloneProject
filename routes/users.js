@@ -92,7 +92,7 @@ router.get('/login', csrfProtection, asyncHandler(async(req,res)=>{
 
   res.render('user-login',{
     csrfToken:req.csrfToken(),
-    title:'Log In',
+    title:'QHistory',
   })
 }));
 

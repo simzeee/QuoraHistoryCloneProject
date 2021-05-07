@@ -261,7 +261,7 @@ fieldset {
 .email{
   display: flex;
   justify-content: center;
-  color: #344fa1;
+  color: black;
   font-size: 15pt;
   margin: 6px;
 }
@@ -280,6 +280,10 @@ input{
 .registerText{
   display: flex;
   justify-content: center;
-  color: #344fa1;
+  color: black;
   margin-bottom: 3px;
+}
+
+.login{
+  background-color: white;
 }
