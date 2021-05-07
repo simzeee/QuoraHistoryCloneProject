@@ -8,7 +8,7 @@ body {
   font-weight: bold;
   font-size: 18pt; */
   background-color: #f0e0cc;
-  background: url(/images/ships.jpeg), url(/images/scroll.jpg);
+  background: url(/images/scroll.jpg);
   background-repeat: repeat;
   background-size: 100em 75%;
   display: flex;
@@ -29,7 +29,7 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
-.huh{
+.searchBar{
   display: flex;
   justify-content: center;
   border-radius: 25px;
@@ -42,6 +42,9 @@ body {
   /* background-image: url(/images/scroll.jpg) */
 }
 
+.--clicked{
+  background-color:rgba(136, 131, 131, 0.5);
+}
 
 .searchContainer{
   color: black;
@@ -111,12 +114,13 @@ a {
   /* color: #7b113a */
 }
 
-.titleContainer{
+/* .titleContainer{
   margin: 10px;
   display: flex;
+  font-family: 'Chaparral Pro';
   justify-content: center;
   align-items: center;
-}
+} */
 
 .title {
   /* text-shadow: white 0px 0px 5px; */
@@ -255,7 +259,7 @@ fieldset {
   width: 32%;
   border-radius: 25px;
   border:thick double #32a1ce;
- 
+
 }
 
 .email{
@@ -286,4 +290,21 @@ input{
 
 .login{
   background-color: white;
+}
+
+#background-images{
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  position: absolute;
+  margin-left: 50px;
+  margin-right: 80%;
+  margin-top: 13%;
+  width: 20%;
+  height: auto;
+}
+
+#background-images > div {
+  display: flex;
+  justify-content: center;
 }

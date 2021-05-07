@@ -1,18 +1,23 @@
-extends layout.pug 
+extends layout.pug
 
-block content 
+append head
+    link(rel="stylesheet" href="/stylesheets/index.css")
+    script(src="/javascripts/index.js" type="module" defer)
+    script(src='/javascripts/questions.js' type='module' defer)
 
-    fieldset 
+block content
+
+
     include utils.pug
-        table 
-            thead 
-                th User Name 
-                th User Email 
-            tbody 
-                tr 
-                    td= user.username 
+        table
+            thead
+                th User Name
+                th User Email
+            tbody
+                tr
+                    td= user.username
                     td= user.email
-    div 
+    div
         a(href='/users/editPassword') Edit Password
     div
         a(href='/') Return to Home

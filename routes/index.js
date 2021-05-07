@@ -37,16 +37,14 @@ router.get(
     if (req.session.authenticated) {
       const userId = req.session.auth.userId;
       const user = await User.findByPk(userId);
-      
+
       res.render("index", {
-        title: "QHistory",
         user,
         questions,
         Tags,
       });
     } else {
       res.render("index", {
-        title: "QHistory",
         questions,
         Tags,
         csrfToken: req.csrfToken(),
@@ -63,7 +61,7 @@ router.post("/search/tags",csrfProtection,asyncHandler(async (req, res) => {
     for (let i = 0; i < vals.length - 1; i++) {
       id.push(parseInt(vals[i]));
     }
-  
+
     let tags = await Tag.findAll({
       where: { id: [...id] },
       include: Question,
@@ -80,12 +78,12 @@ router.post("/search/tags",csrfProtection,asyncHandler(async (req, res) => {
       res.render("search-result", {
         questions,
         csrfToken: req.csrfToken(),
-        
+
       });
     }else{
       res.render("search-result", {
         csrfToken: req.csrfToken(),
-       
+
       });
     }
   })
@@ -107,7 +105,7 @@ router.post(
     for (let i = 0; i < results.length; i++) {
       questions.push(results[i]);
     }
-    
+
     res.render("search-result", { questions, csrfToken: req.csrfToken(), });
   })
 );
@@ -120,9 +118,9 @@ router.get('/tags/:id(\\d+)',asyncHandler(async(req,res)=>{
   tag.Questions.forEach((question) => {
     questions.push(question);
   });
-  
+
   res.render("search-result", { questions });
-    
+
 
 }));
 module.exports = router;
