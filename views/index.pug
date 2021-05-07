@@ -2,6 +2,8 @@ extends layout
 
 append head
   //- add page specific styles by appending to the head
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Merriweather:wght@300&family=Quicksand:wght@600&display=swap" rel="stylesheet">
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
@@ -18,7 +20,7 @@ block content
             each tag in Tags 
                 div(class='searchContainer2')
                   input(type='checkbox' name=tag.name value=tag.id)
-                  label= tag.name
+                  label(class='tagLabel')= tag.name
             
             div(class='searchContainer2')
                 button(type='submit') Search Tags
@@ -61,7 +63,7 @@ block content
         div(class='tags')
           p(class='tag') Tags: 
         each tag in question.Tags
-          a(href=`tags/${tag.id}` name='tag')= tag.name
+          a(href=`tags/${tag.id}` name='tag' class='tags')= tag.name
       div(class='userNameContainer')
         div(class='username')
           label(name='username')= question.User.username
