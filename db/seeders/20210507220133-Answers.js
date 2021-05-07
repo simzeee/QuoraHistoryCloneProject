@@ -44,7 +44,7 @@ module.exports = {
       },
       {
         content:
-          "Still makes you wonder though, after the collapse there was a dark age and degredation of culture, I wonder how many times human societies have gone through this cycle of rise and fall that has gone unrecord...really makes you think",
+          "Still makes you wonder though, after the collapse there was a dark age and degredation of culture, I wonder how many times human societies have gone through this cycle of rise and fall that has gone unrecorded...really makes you think",
         userId: 3,
         questionId: 4,
         createdAt: new Date(),
