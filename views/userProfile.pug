@@ -3,6 +3,7 @@ extends layout.pug
 block content 
 
     fieldset 
+    include utils.pug
         table 
             thead 
                 th User Name 
@@ -12,7 +13,6 @@ block content
                     td= user.username 
                     td= user.email
     div 
-        a(href='/users/editUserName') Edit User Name 
-        a(href='/users/editPassword') Update Password
+        a(href='/users/editPassword') Edit Password
     div
         a(href='/') Return to Home
