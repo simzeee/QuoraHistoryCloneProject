@@ -6,7 +6,8 @@ const {csrfProtection,asyncHandler}=require('./utils');
 const bcrypt = require("bcryptjs");
 const {loginUser,logoutUser}=require('../auth');
 const { check, validationResult } = require("express-validator");
-const { restoreUser, requireAuth } = require("../auth");
+const { restoreUser, requireAuth } = require('../auth');
+
 
 
 
@@ -156,6 +157,8 @@ router.get(
   restoreUser,
   requireAuth,
   csrfProtection,
+  restoreUser,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
