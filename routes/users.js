@@ -6,7 +6,7 @@ const {csrfProtection,asyncHandler}=require('./utils');
 const bcrypt = require("bcryptjs");
 const {loginUser,logoutUser}=require('../auth');
 const { check, validationResult } = require("express-validator");
-
+const { restoreUser, requireAuth } = require("../auth");
 
 
 
@@ -124,7 +124,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req,re
       errors.push('Login failed for the provided email address.')
     } else {
       errors= validatorErrors.array().map((error)=>error.msg);
-      console.log(errors)
+      
     }
     res.render('user-login',{
       title:'Log In',
@@ -141,20 +141,78 @@ router.post('/logout',(req,res)=>{
 
 router.get(
   "/userProfile",
-  asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId;
-    const user = await User.findByPk(userId);
-    res.render("userProfile", { user });
-  })
-);
-
-router.get(
-  "/editProfile",
+  restoreUser,
+  requireAuth,
   csrfProtection,
   asyncHandler(async (req, res) => {
     const userId = req.session.auth.userId;
     const user = await User.findByPk(userId);
-    res.render("editProfile", { user });
+    res.render("userProfile", { user, csrfToken: req.csrfToken() });
+  })
+);
+
+router.get(
+  "/editPassword",
+  restoreUser,
+  requireAuth,
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const userId = req.session.auth.userId;
+    const user = await User.findByPk(userId);
+    res.render("editPassword", { user , csrfToken:req.csrfToken()});
+  })
+);
+const editPasswordValidator = [
+  check("newPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a password")
+    .isLength({ max: 50 })
+    .withMessage("Please provide a password no longer than 50 characters")
+    .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])/, "g")
+    .withMessage(
+      "Please include a lowercase letter, uppercase letter, number, and special character"
+    ),
+  check("confirmPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a password confirmation")
+    .custom((value, { req }) => {
+      if (value != req.body.newPassword) {
+        throw new Error("Confirm password does not match the new password");
+      }
+      return true;
+    }),
+];
+
+router.post(
+  "/editPassword",
+  editPasswordValidator,
+  restoreUser,
+  requireAuth,
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const { password, newPassword, confirmPassword } = req.body;
+    let errors = [];
+    const validationErrors = validationResult(req);
+
+    if (validationErrors.isEmpty()) {
+      const userId = req.session.auth.userId;
+      const user = await User.findByPk(userId);
+      const passwordMatch = await bcrypt.compare(
+        password,
+        user.hashedPassword.toString()
+      );
+      if(passwordMatch){
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        await user.update({ hashedPassword });
+        return res.redirect("/");
+      }else{
+        errors.push('please enter valid current password');
+        return res.render('editPassword',{errors, csrfToken:req.csrfToken()})
+      }
+    }else{
+      errors = validationErrors.array().map((error) => error.msg);
+      res.render('editPassword',{errors,csrfToken:req.csrfToken()})
+    }
   })
 );
 module.exports = router;
