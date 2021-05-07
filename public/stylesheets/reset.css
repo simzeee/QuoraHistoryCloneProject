@@ -110,7 +110,7 @@ a {
 .greeting {
   margin: 10px;
   font-size: 20pt;
-  font-weight: bold;
+  /* font-weight: bold; */
   /* color: #7b113a */
 }
 
@@ -126,6 +126,7 @@ a {
   /* text-shadow: white 0px 0px 5px; */
   font-family: 'Quicksand', sans-serif;
   font-size: 40pt;
+  font-weight: 550;
   margin: 10px;
   margin-bottom: 20px;
   /* font-size: 24pt; */
@@ -228,7 +229,6 @@ button {
 	display:inline-block;
 	cursor:pointer;
 	color:rgb(47, 53, 53);
-	/* font-family:Arial; */
 	font-size:12px;
 	font-weight:bold;
   margin: 2px;
@@ -299,10 +299,15 @@ input{
   position: absolute;
   margin-left: 50px;
   margin-right: 80%;
-  margin-top: 13%;
+  margin-top: 14%;
   width: 20%;
   height: auto;
 }
+
+.theme{
+  margin-left: 53px;
+}
+
 
 #background-images > div {
   display: flex;
