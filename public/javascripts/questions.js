@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-  
+    console.log("hello from questions.js!")
 
     function removeAllChildNodes(parent) {
         while (parent.firstChild) {
@@ -45,12 +45,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const showCommentsButtons = document.querySelectorAll('.showComment-button');
     showCommentsButtons.forEach(async showCommentsButton => {
         showCommentsButton.addEventListener('click', async (e) => {
-            e.preventDefault();
-
-            console.log('test')
             // pull SQL serial id from the element ID
             const answerId = showCommentsButton.id.split('-')[1];
 
+            if (showCommentsButton.innerHTML === 'Hide Comments') {
+                const commentsDiv = document.querySelector(`.current-comment-container-${answerId}`);
+                const newCommentContainer = document.querySelector(`.new-comment-container-${answerId}`);
+
+                removeAllChildNodes(commentsDiv);
+                removeAllChildNodes(newCommentContainer);
+                showCommentsButton.innerHTML = 'Show Comments'
+                return
+            }
 
             try {
                 const answerComments = await fetch(`http://localhost:8080/answers/${answerId}/comments`)
@@ -63,7 +69,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 if (json.length) {
                     const commentsDiv = document.querySelector(`.current-comment-container-${answerId}`);
-                    console.log(json)
                     json.forEach(comment => {
                         const commentDiv = document.createElement('div');
                         const usernameDiv = document.createElement('div');
@@ -99,14 +104,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 const newCommentContainer = document.querySelector(`.new-comment-container-${answerId}`);
                 newCommentContainer.appendChild(newCommentForm);
 
-                // const hideCommentsButton = document.createElement('button');
-                // hideCommentsButton.setAttribute('class', 'hideComment-button');
-                // hideCommentsButton.setAttribute('id', `hideComments-${answerId}`);
-                // hideCommentsButton.innerHTML = 'Hide Comments';
-
-                // const commentsButton = showCommentsButton.parentNode;
-                // commentsButton.removeChild(showCommentsButton);
-                // commentsButton.appendChild(hideCommentsButton);
+                showCommentsButton.innerHTML = 'Hide Comments'
 
             } catch (err) {
                 if (err.status >= 400 && err.status < 600) {
@@ -128,30 +126,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
             }
         });
     });
-
-    const hideCommentsButtons = document.querySelectorAll('.hideComment-button');
-    hideCommentsButtons.forEach(hideCommentsButton => {
-        hideCommentsButton.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            // pull SQL serial id from the element ID
-            const answerId = hideCommentsButton.id.split('-')[1];
-
-            const commentsDiv = document.querySelector(`.current-comment-container-${answerId}`);
-            const newCommentContainer = document.querySelector(`.new-comment-container-${answerId}`);
-
-            // const showCommentsButton = document.createElement('button');
-            // showCommentsButton.setAttribute('id', `showComments-${answerId}`);
-            // showCommentsButton.setAttribute('class', 'showComment-button');
-            // showCommentsButton.innerHTML = 'Show Comments'
-
-            removeAllChildNodes(commentsDiv);
-            removeAllChildNodes(newCommentContainer);
-
-            // listen to the hide comments button and remove comments when clicked
-            // commentsButtonsContainer.removeChild(hideCommentsButton);
-            // commentsButtonsContainer.appendChild(showCommentsButton);
-        });
-    });
-    // 
 });
