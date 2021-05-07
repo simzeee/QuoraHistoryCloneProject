@@ -4,16 +4,17 @@
 }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #f0ebcc;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 18pt; */
+  background-color: #f0e0cc;
+  background: url(/images/ships.jpeg), url(/images/scroll.jpg);
+  background-repeat: repeat;
+  background-size: 100em 75%;
   display: flex;
   /* justify-content: right; */
   flex-direction: column;
   align-items: center;
-}
-
-a{
-  color: white;
 }
 
 .headerOne {
@@ -23,37 +24,91 @@ a{
   width: 100%;
   height: 100px;
   margin: 10px;
-  background-color: #3d84b8;
+  /* background-image: url(/images/pyramid.jpg); */
+  background-image: url(/images/scroll.jpg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+.huh{
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  position: absolute;
+  margin-left: 70%;
+  margin-top: 10.5%;
+  /* padding: 10%; */
+  width: 100%;
+  height: auto;
+  /* background-image: url(/images/scroll.jpg) */
 }
 
 
+.searchContainer{
+  color: black;
+  width: 20%;
+  display: flex;
+  justify-content: left;
+  border-radius: 25px;
+  /* flex-direction: wrap; */
+  margin-top: 10px;
+  margin-left: 10px;
+  background-image: url(/images/scroll2.png);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
 
-.containAll{
+.searchContainer2{
+  width: auto;
+  display: flex;
+  justify-content: left;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.searchTagsContainer{
+  /* width: auto; */
   display: flex;
   flex-direction: column;
-  /* justify-content: space-evenly; */
-  width: 35%;
-  background-color: #3d84b8;
+}
+
+
+.tagSearch {
+  /* position: absolute; */
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: black
+}
+
+.containAll{
+  color: black;
+  display: flex;
+  flex-direction: column;
+  width: 38%;
+  /* background-color: #3d84b8; */
   margin: 5px;
   border-radius: 25px;
-  /* box-shadow: grey; */
-  /* align-items: center; */
-  
+  background-image: url(/images/scroll2.png);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  /* background-image: url(/images/pyramid.jpg); */
 }
 
 .opening{
+  /* text-shadow: white 0px 0px 5px; */
   margin: 10px;
   display: flex;
   align-content: center;
   justify-content: center;
-  /* align-items: center; */ 
+  flex-wrap: nowrap;
 }
 
 .greeting {
   margin: 10px;
   font-size: 20pt;
   font-weight: bold;
-  color: white;
+  /* color: #7b113a */
 }
 
 .titleContainer{
@@ -64,40 +119,70 @@ a{
 }
 
 .title {
+  /* text-shadow: white 0px 0px 5px; */
+  font-family: 'Quicksand', sans-serif;
+  font-size: 40pt;
   margin: 10px;
-  font-size: 24pt;
-  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+  /* font-size: 24pt; */
+  color: black;
 }
 
 .userNameContainer {
   margin-top: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  /* text-shadow: white 0px 0px 5px; */
+
+}
+
+.usernameText{
+  font-style: italic;
+}
+
+.tags {
+  color: black;
+  background-color: #d7dcdc;;
+  border: 2px ridge #e6ebeb;
+  /* text-shadow: white 0px 0px 5px; */
+  width: auto;
+  border-radius: 5px;
 }
 
 .tagsContainer{
+  /* border-radius: 5px; */
   margin: 5px;
+  width: auto;
+  margin-left: 15px;
+  margin-top: 15px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  /* border: 4mm ridge rgba(50, 132, 220, 0.6) */
 }
 
 .questionsContainer {
-  /* height: auto; */
-  margin-top: 20px;
+  margin-top: 15px;
+  margin-left: 10px;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content:flex-start;
+  /* flex-wrap: wrap; */
   align-content: center;
 }
 .home-questions {
   margin: 5px;
-  font-size: 12pt;
-  color: white;
+  margin-bottom: 20px;
+  font-size: 16pt;
+  /* font-weight: bold; */
+  font-family: 'Chaparral Pro';
+  color: black;
+  /* text-shadow: white 0px 0px 5px; */
+
 }
 
 .userName {
   margin: 5px;
   display: flex;
+  font-family: 'Chaparral Pro';
 }
 
 .buttonsContainer{
@@ -120,17 +205,33 @@ a{
   margin-right: 10px;
 }
 
+input {
+  margin-right: 5px;
+  margin-top: 9px;
+}
+
+.tagLabel{
+  margin-bottom: 10px;
+}
+
 button {
 
-	background: #344fa1;
-	border:1px solid #84bbf3;
+  box-shadow:inset 0px 1px 0px 0px #ffffff;
+	/* background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%); */
+	background-color:#e6ebeb;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
-	padding: 3px;
+	color:rgb(47, 53, 53);
+	/* font-family:Arial; */
+	font-size:12px;
+	font-weight:bold;
+  margin: 2px;
+	padding:3px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #528ecc;
-  margin: 3px;
+	text-shadow:0px 1px 0px #ffffff;
+
 }
 button:hover {
 	background:linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
@@ -145,27 +246,16 @@ button:active {
   margin-right: 2px;
 }
 
-/* .login {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
-  border-radius: 25px;
-  border:thick double #32a1ce;
-} */
-
 /* Login Page */
 
 fieldset {
   margin-top: 10px;
   display: flex;
   justify-content: center;
-  /* flex-direction: column;
-  align-content: center; */
   width: 32%;
   border-radius: 25px;
   border:thick double #32a1ce;
-  /* background-color: #c6ffc1; */
+ 
 }
 
 .email{
@@ -174,9 +264,6 @@ fieldset {
   color: #344fa1;
   font-size: 15pt;
   margin: 6px;
-  /* align-content: space-between; */
-  /* flex-direction: column; */
-  /* align-content: center; */
 }
 
 .input, .password{
@@ -188,7 +275,6 @@ fieldset {
 input{
   border-radius: 5px;
   padding: 3px;
-  /* background: #73AD21; */
 }
 
 .registerText{
@@ -197,11 +283,3 @@ input{
   color: #344fa1;
   margin-bottom: 3px;
 }
-
-/* .form{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
-  border-radius: 25px;
-} */
