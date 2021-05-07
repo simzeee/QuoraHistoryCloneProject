@@ -56,14 +56,12 @@ block content
 
   each question in questions
     div(class='containAll')
+      div(class='tagsContainer')
+        each tag in question.Tags
+          a(href=`tags/${tag.id}` name='tag' class='tags')= tag.name
       div(class='questionsContainer')
         a(href=`/answers/${question.id}`)
           p(class='home-questions')= question.content
-      div(class='tagsContainer')
-        div(class='tags')
-          p(class='tag') Tags: 
-        each tag in question.Tags
-          a(href=`tags/${tag.id}` name='tag' class='tags')= tag.name
       div(class='userNameContainer')
         div(class='username')
           label(name='username')= question.User.username
