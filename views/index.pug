@@ -2,8 +2,7 @@ extends layout
 
 append head
   //- add page specific styles by appending to the head
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Merriweather:wght@300&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+  
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
@@ -13,7 +12,7 @@ append head
 block content
 
   div(id='background-images' class='containAll')
-    h2 Select Theme
+    h2(class='theme') Select Theme
     div(id='/images/scroll2.png' class='background-image --clicked') None
     div(id='/images/renaissance.png' class='background-image') Renaissance
     div(id='/images/dark-ages.jpg' class='background-image' ) Dark Ages
