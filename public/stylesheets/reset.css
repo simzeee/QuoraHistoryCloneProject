@@ -7,8 +7,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 18pt;
-  background-color: #f0ebcc;
-  /* background-image: url(/images/map.jpg); */
+  /* background-color: #f0e0cc; */
+  background-image: url(/images/map.jpg);
   display: flex;
   /* justify-content: right; */
   flex-direction: column;
@@ -29,6 +29,7 @@ body {
 }
 
 .searchContainer{
+  text-shadow: white 0px 0px 10px;
   color: #7b113a;
   width: auto;
   display: flex;
@@ -93,6 +94,7 @@ a{
 }
 
 .opening{
+  text-shadow: white 0px 0px 10px;
   margin: 10px;
   display: flex;
   align-content: center;
@@ -116,6 +118,7 @@ a{
 }
 
 .title {
+  text-shadow: white 0px 0px 10px;
   font-family: 'Quicksand', sans-serif;
   font-size: 40pt;
   margin: 10px;
@@ -128,10 +131,14 @@ a{
   margin-top: 10px;
   display: flex;
   justify-content: center;
+  text-shadow: white 0px 0px 10px;
+
 }
 
 .tags {
   color: #7b113a;
+  text-shadow: white 0px 0px 10px;
+
 }
 .tagsContainer{
   margin: 5px;
@@ -152,6 +159,8 @@ a{
   font-size: 16pt;
   font-weight: bold;
   color: #7b113a;
+  text-shadow: white 0px 0px 10px;
+
 }
 
 .userName {
@@ -191,9 +200,9 @@ input {
 button {
 
   /* color: #7b113a */
-
-	background: #344fa1;
-	border:1px solid #84bbf3;
+  border-radius: 5px;
+	background: #652735;
+	/* border:1px solid #84bbf3; */
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
