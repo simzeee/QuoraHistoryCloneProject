@@ -168,4 +168,12 @@ const updateProfileValidation = [
 router.post('/editProfile',csrfProtection,asyncHandler(async(req,res)=>{
 
 }))
+
+router.post('/demoLogin', csrfProtection, asyncHandler(async(req, res)=>{
+  const userId = 1;
+  const demoUser = await User.findByPk(userId);
+  preventDefault()
+  loginUser(req, res, demoUser);
+  return res.redirect('/');
+}))
 module.exports = router;

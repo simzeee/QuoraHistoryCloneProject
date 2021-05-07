@@ -8,13 +8,19 @@ block content
         div(class='email') 
           label Email Address 
         div(class='input') 
-          input(type='text' name='email')
+          input(type='text' name='email' id='email-input')
         div(class='password') 
           label(class='registerText') Password 
         div(class='input') 
-          input(type='password' name='password')
+          input(type='password' name='password' id='password-input')
         div(class='input')  
-          button(type='submit') Login
+          button(type='submit' class='login-button') Login
+          input(type='hidden' name='_csrf' value=csrfToken)
+        div(class='input')  
+      form(method='post' action='/users/demoLogin')
+        div(class='input')  
+          button(type='submit' class='demo-button') Demo Login
           input(type='hidden' name='_csrf' value=csrfToken)
         div(class='registerText') 
             p: a(href='/users/register' class='registerText') Don't have an account yet?
+    script(type='module' src='/javascripts/demoUser.js')
