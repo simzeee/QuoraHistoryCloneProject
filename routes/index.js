@@ -6,34 +6,54 @@ const { csrfProtection, asyncHandler } = require("./utils");
 const cookieParser = require("cookie-parser");
 const { Op } = require("sequelize");
 router.use(cookieParser());
+const { restoreUser, requireAuth } = require("../auth");
 /* GET home page. */
-router.get('/', csrfProtection,asyncHandler( async (req, res, next) => {
-  const questions = await Question.findAll({
-    include: [ User, {
-      model: Tag,
-      through: QuestionTag},],
-  });
-  let upvoteCounts=[];
-  for(let i=0;i<questions.length;i++){
-    const question=questions[i];
-    const id=questions[i].id;
-    const upvoteCount=await Upvote.findAll({where:{questionId:id}});
-    question.upvotes=upvoteCount.length;
-    upvoteCounts.push(upvoteCount.length);
-  }
-  questions.sort((a,b)=>{
-    return b.upvotes-a.upvotes
+router.get(
+  "/",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    const questions = await Question.findAll({
+      include: [
+        User,
+        {
+          model: Tag,
+          through: QuestionTag,
+        },
+      ],
+    });
+    let upvoteCounts = [];
+    for (let i = 0; i < questions.length; i++) {
+      const question = questions[i];
+      const id = questions[i].id;
+      const upvoteCount = await Upvote.findAll({ where: { questionId: id } });
+      question.upvotes = upvoteCount.length;
+      upvoteCounts.push(upvoteCount.length);
+    }
+    questions.sort((a, b) => {
+      return b.upvotes - a.upvotes;
+    });
+    const Tags = await Tag.findAll();
+    // console.log(questions)
+    if (req.session.authenticated) {
+      const userId = req.session.auth.userId;
+      const user = await User.findByPk(userId);
+      
+      res.render("index", {
+        title: "QHistory",
+        user,
+        questions,
+        Tags,
+      });
+    } else {
+      res.render("index", {
+        title: "QHistory",
+        questions,
+        Tags,
+        csrfToken: req.csrfToken(),
+      });
+    }
   })
-  const Tags = await Tag.findAll();
-  if (req.session.authenticated) {
-    const userId = req.session.auth.userId;
-    const user = await User.findByPk(userId);
-    res.render('index', { title: 'Quriouser', user, questions, Tags });
-
-  } else {
-    res.render('index', { title: 'Quriouser', questions, Tags, csrfToken:req.csrfToken(),});
-  }
-}));
+);
 
 router.post("/search/tags",csrfProtection,asyncHandler(async (req, res) => {
     const result = req.body;
@@ -57,9 +77,16 @@ router.post("/search/tags",csrfProtection,asyncHandler(async (req, res) => {
       if (question){return question}
     })
     if(questions.length){
-      res.render("search-result", { questions ,csrfToken:req.csrfToken(),});
+      res.render("search-result", {
+        questions,
+        csrfToken: req.csrfToken(),
+        
+      });
     }else{
-      res.render("search-result", { csrfToken: req.csrfToken() });
+      res.render("search-result", {
+        csrfToken: req.csrfToken(),
+       
+      });
     }
   })
 );
@@ -84,5 +111,18 @@ router.post(
     res.render("search-result", { questions, csrfToken: req.csrfToken(), });
   })
 );
+router.get('/tags/:id(\\d+)',asyncHandler(async(req,res)=>{
+  const tagId=req.params.id;
+  const tag=await Tag.findByPk(tagId,{
+    include:Question
+  });
+  let questions=[];
+  tag.Questions.forEach((question) => {
+    questions.push(question);
+  });
+  
+  res.render("search-result", { questions });
+    
 
+}));
 module.exports = router;

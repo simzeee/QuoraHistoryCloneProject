@@ -8,7 +8,11 @@ const { restoreUser, requireAuth } = require('../auth');
 
 router.get('/', csrfProtection, restoreUser, requireAuth, asyncHandler(async (req, res, next) => {
     const tags = await Tag.findAll();
-    res.render('question-submit', { csrfToken: req.csrfToken(), tags });
+    res.render("question-submit", {
+      csrfToken: req.csrfToken(),
+      tags,
+      
+    });
 }));
 
 questionValidators = [
@@ -62,7 +66,12 @@ router.get('/:id(\\d+)/edit', csrfProtection, restoreUser, requireAuth, asyncHan
     if (questionUserId === currentUserId) {
         const content = question.content;
         const tags = await Tag.findAll();
-        res.render('question-edit', { csrfToken: req.csrfToken(), question, tags });
+        res.render("question-edit", {
+          csrfToken: req.csrfToken(),
+          
+          question,
+          tags,
+        });
     } else {
         const questions = await Question.findAll({
           include: [
@@ -97,7 +106,8 @@ router.get('/:id(\\d+)/edit', csrfProtection, restoreUser, requireAuth, asyncHan
             questions,
             Tags,
             csrfToken: req.csrfToken(),
-            errors: ['Unable to edit other users\' questions']
+            errors: ["Unable to edit other users' questions"],
+            
           });
         }
     }

@@ -32,18 +32,16 @@ block content
       input(type='hidden' name='_csrf' value=csrfToken)
   
   if user
-    a(href='/users/userProfile' class='containAll') View Profile
+    
     div(class='containAll')
       div(class='opening')
-        p(class='greeting') Welcome to Quriouser, #{user.username}!
+        p(class='greeting') Welcome to QHistory, #{user.username}!
 
-    
-    
 
   else
     div(class='containAll')
       div(class='opening')
-        p(class='greeting') Welcome to Quriouser!
+        p(class='greeting') Welcome to QHistory!
       div(class='opening')
         a(href='/users/register') Register
       div(class='opening')
@@ -67,21 +65,16 @@ block content
         div(class='username')
           label(name='username' class='usernameText')= question.User.username
       div(class='buttonsContainer')
-        button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
-        button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
-        button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
+        if user
+          if user.id===question.userId
+            button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
+            button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
+            button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
+          else 
+            button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
+        else 
+          button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
+        
    
-  //- div 
-  //-   form(method='post' action='/search/tags')
-  //-         div 
-  //-             h2 Please Select From These Available Topics 
-          
-  //-         each tag in Tags 
-          
-  //-             input(type='checkbox' name=tag.name value=tag.id)
-  //-             label= tag.name
-          
-  //-         div 
-  //-             button(type='submit') Search Tags
-  //-             input(type='hidden' name='_csrf' value=csrfToken)
+
     

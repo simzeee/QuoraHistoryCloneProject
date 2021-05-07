@@ -5,12 +5,13 @@ head
 body
   div(class='headerOne')
     div(class='titleContainer')
-      h2(class='title')= title
+      a(href='/')
+        h2(class='title')= title
     div(class='openingLogOut')
      if user
       div(class='viewProfile')
         form(action='/users/userProfile') 
-          button(type='submit') View Profile
+          button(type='submit' ) View Profile
       form(method='post' action='/users/logout')
         button(type='submit') Log Out
   block content
