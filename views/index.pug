@@ -13,9 +13,9 @@ append head
 block content
   div(class='huh')
     div(class='searchContainer') 
-      form(method='post' action='/search/tags')
-            div(class='searchContainer')  
-                h2 Please Select From These Available Topics 
+      form(method='post' action='/search/tags' class='tagSearch')
+            div(class='searchContainer2')  
+                h2 Select Topic  
             
             each tag in Tags 
                 div(class='searchContainer2')
@@ -23,7 +23,7 @@ block content
                   label(class='tagLabel')= tag.name
             
             div(class='searchContainer2')
-                button(type='submit') Search Tags
+                button(type='submit') Search Topics 
                 input(type='hidden' name='_csrf' value=csrfToken)  
   form(method='post' action='/search/keyword')
     div 
@@ -64,7 +64,7 @@ block content
           p(class='home-questions')= question.content
       div(class='userNameContainer')
         div(class='username')
-          label(name='username')= question.User.username
+          label(name='username' class='usernameText')= question.User.username
       div(class='buttonsContainer')
         button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
         button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete

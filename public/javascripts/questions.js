@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-    console.log("hello from questions.js!")
+  
 
     function removeAllChildNodes(parent) {
         while (parent.firstChild) {
