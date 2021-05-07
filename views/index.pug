@@ -11,28 +11,41 @@ append head
 
 
 block content
-  div(class='huh')
-    div(class='searchContainer') 
+
+  div(id='background-images' class='containAll')
+    h2 Select Theme
+    div(id='/images/scroll2.png' class='background-image --clicked') None
+    div(id='/images/renaissance.png' class='background-image') Renaissance
+    div(id='/images/dark-ages.jpg' class='background-image' ) Dark Ages
+    div(id='/images/ancient.png' class='background-image' ) Ancient
+    div(id='/images/enlightenment.png' class='background-image' ) Enlightenment
+    div(id='/images/us-history.jpeg' class='background-image' ) U.S. History
+    div(id='/images/bronze-age.jpg' class='background-image' ) Bronze Age
+    div(id='/images/world-war-1.jpg' class='background-image' ) World War I
+    div(id='/images/world-war-2.png' class='background-image' ) World War II
+
+  div(class='searchBar')
+    div(class='searchContainer')
       form(method='post' action='/search/tags' class='tagSearch')
-            div(class='searchContainer2')  
-                h2 Select Topic  
-            
-            each tag in Tags 
+            div(class='searchContainer2')
+                h2 Select Topic
+
+            each tag in Tags
                 div(class='searchContainer2')
                   input(type='checkbox' name=tag.name value=tag.id)
                   label(class='tagLabel')= tag.name
-            
+
             div(class='searchContainer2')
-                button(type='submit') Search Topics 
-                input(type='hidden' name='_csrf' value=csrfToken)  
+                button(type='submit') Search Topics
+                input(type='hidden' name='_csrf' value=csrfToken)
   form(method='post' action='/search/keyword')
-    div 
+    div
       input(type='text' name='searchBar' placeholder='Search...')
       button(type='submit') Search Keyword
       input(type='hidden' name='_csrf' value=csrfToken)
-  
+
   if user
-    
+
     div(class='containAll')
       div(class='opening')
         p(class='greeting') Welcome to QHistory, #{user.username}!
@@ -70,11 +83,7 @@ block content
             button(id=`edit-${question.id}` type='button' class= 'edit-button') Edit
             button(id=`delete-${question.id}` type='button' class= 'delete-button') Delete
             button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
-          else 
+          else
             button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
-        else 
+        else
           button(id=`answer-${question.id}` type='button' class= 'answer-button') Answers
-        
-   
-
-    

@@ -15,7 +15,6 @@ const { restoreUser, requireAuth } = require('../auth');
 router.get('/register',csrfProtection, asyncHandler(async(req, res, next)=> {
   const user=User.build();
   res.render('user-register',{
-    title: 'Register',
     user,
     csrfToken:req.csrfToken(),
   });
@@ -80,7 +79,6 @@ router.post('/register',registerValidation,csrfProtection,asyncHandler(async(req
   } else {
     const errors= validatorErrors.array().map((error)=>error.msg);
     res.render('user-register',{
-      title:'Register',
       user,
       errors,
       csrfToken:req.csrfToken(),
@@ -91,8 +89,7 @@ router.post('/register',registerValidation,csrfProtection,asyncHandler(async(req
 router.get('/login', csrfProtection, asyncHandler(async(req,res)=>{
 
   res.render('user-login',{
-    csrfToken:req.csrfToken(),
-    title:'QHistory',
+    csrfToken:req.csrfToken()
   })
 }));
 
@@ -125,10 +122,9 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req,re
       errors.push('Login failed for the provided email address.')
     } else {
       errors= validatorErrors.array().map((error)=>error.msg);
-      
+
     }
     res.render('user-login',{
-      title:'Log In',
       email,
       errors,
       csrfToken:req.csrfToken(),

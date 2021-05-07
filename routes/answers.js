@@ -76,20 +76,20 @@ answerValidators = [
 ]
 
 router.post('/', restoreUser, requireAuth, answerValidators, asyncHandler(async (req, res, next) => {
-  console.log("body", req.body)
   const { content, questionId } = req.body
   const userId = req.session.auth.userId;
   const validatorErrors = validationResult(req);
-  let errors = []
-  console.log("question ID", questionId)
+  let errors = [];
 
   if (validatorErrors.isEmpty()) {
     const newAnswer = await Answer.create({
       content, userId, questionId
     });
 
-    res.redirect('/')
+    res.redirect(`/answers/${questionId}`);
   }
+
+  res.redirect(`/answers/${questionId}`)
 }));
 
 router.post('/upvote/question', asyncHandler(async(req,res)=>{
