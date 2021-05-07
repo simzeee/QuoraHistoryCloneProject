@@ -2,13 +2,15 @@ extends layout.pug
 block content
   if questions
     each question in questions 
-      fieldset
+      fieldset(class='containAll')
         a(href=`/answers/${question.id}`) 
             p= question.content
     div
-        a(href='/') Return to Home
+      form(method='get' action='/')
+        button(type='submit') Return to Home
   else 
-    fieldset 
+    fieldset(class='containAll')
       p No results found!
     div
-        a(href='/') Return to Home
+      form(method='get' action='/')
+        button(type='submit') Return to Home

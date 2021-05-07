@@ -8,22 +8,28 @@ append head
   script(src='/javascripts/questions.js' type='module' defer)
 
 block content
-  div(class='errors-container')
-    h1 Question:
-    div
-      label(name='username')= question.User.username
-    div
-      each tag in question.Tags
-        a(href=`tags/${tag.id}` name='tag')= tag.name
-    div
-        form(method='post' action='/answers/upvote/question')
-            span(id='question-upvote-count')= questionUpvote.value
-            input(type='hidden' name='questionId' value=question.id)
-            input(type='hidden' name='userId' value=user.id)
-            button(id=`upvote-${question.id}` type='submit'  class='upvote-question-button') 👍
-    p= question.content
+    div(class='errors-container')
+    
+    div(class='containAll')
+        div(class='tagsContainer')
+          each tag in question.Tags
+            a(href=`tags/${tag.id}` name='tag' class='tags')= tag.name
+        div(class='questionsContainer')
+          a(href=`/answers/${question.id}`)
+            p(class='home-questions')= question.content
+        div(class='userNameContainer')
+          div(class='username')
+            label(name='username' class='usernameText')= question.User.username
+        div(class='buttonsContainer')
+      
+            form(method='post' action='/answers/upvote/question')
+                span(id='question-upvote-count')= questionUpvote.value
+                input(type='hidden' name='questionId' value=question.id)
+                input(type='hidden' name='userId' value=user.id)
+                button(id=`upvote-${question.id}` type='submit'  class='upvote-question-button') 👍
+        
 
-    fieldset#answers
+    fieldset(class='containAll' id='answers')
         h2 Answers:
         div
             each answer in answers
@@ -45,5 +51,6 @@ block content
                         input(type="hidden" name='questionId' value= questionId)
                     div
                         button(type='submit') Post Answer
-                    div
-                        a(href='/') Return to Home
+    div
+        form(method='get' action='/')
+            button(type='submit') Return to Home
