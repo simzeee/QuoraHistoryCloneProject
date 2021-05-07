@@ -12,8 +12,7 @@ block content
     
     div(class='containAll')
         div(class='tagsContainer')
-          each tag in question.Tags
-            a(href=`tags/${tag.id}` name='tag' class='tags')= tag.name
+          
         div(class='questionsContainer')
           a(href=`/answers/${question.id}`)
             p(class='home-questions')= question.content
