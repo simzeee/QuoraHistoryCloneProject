@@ -308,6 +308,7 @@ input{
 #background-images > div {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .theme{
