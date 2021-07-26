@@ -377,3 +377,47 @@ a.fab{
   align-items: center;
   justify-content: center;
 }
+
+/* Answers Page */
+
+#answers {
+ padding: 10px 15px 10px 15px;
+ border: none;
+}
+
+.answersContainer {
+  /* max-width: 800px; */
+  /* background-color: blue; */
+}
+
+.answerContentContainer {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.answerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 2%;
+  border: 2px solid none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  padding: 10px 3px 0 5px;
+  width: 80%;
+  height: 100px;
+}
+
+#answerField{
+  max-width: 800px;
+  max-height: 300px;
+  min-width: 100%;
+  min-height: 150px;
+}
+
+.answerUsername {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
