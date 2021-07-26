@@ -90,7 +90,7 @@ a {
   width: 38%;
   margin: 5px;
   border-radius: 25px;
-  background-image: url(/images/scroll2.png);
+  /* background-image: url(/images/scroll2.png); */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
   background-color: burlywood;
 }
@@ -407,6 +407,7 @@ a.fab{
   padding: 10px 3px 0 5px;
   width: 80%;
   height: 100px;
+  background-color: rgba(255, 248, 220, 0.502);
 }
 
 #answerField{
@@ -414,10 +415,23 @@ a.fab{
   max-height: 300px;
   min-width: 100%;
   min-height: 150px;
+  border: none;
+  margin-top: 2%;
 }
 
 .answerUsername {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  padding-right: 3px;
+  padding-top: 5px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#postAnswer {
+  margin-top: 2%;
 }

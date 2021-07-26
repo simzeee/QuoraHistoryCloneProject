@@ -34,7 +34,7 @@ block content
             each answer in answers
 
                 div(class="answerContentContainer")
-                    div(name= answer.User.username)= answer.User.username
+                    //- div(name= answer.User.username)= answer.User.username
                     div(name= `answer-${answer.User.username}` class=("answerContent"))
                         p= answer.content
                         div(name= answer.User.username class="answerUsername")= answer.User.username
@@ -49,8 +49,8 @@ block content
                         label(for='content')
                         textarea(name='content', id="answerField" cols='100', rows='10' type='text' required)
                         input(type="hidden" name='questionId' value= questionId)
-                    div
-                        button(type='submit') Post Answer
+                    div(class="buttonsContainer")
+                        button(type='submit', id="postAnswer") Post Answer
     //- div
     //-     form(method='get' action='/')
     //-         button(type='submit') Return to Home
