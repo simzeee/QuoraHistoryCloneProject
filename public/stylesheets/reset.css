@@ -401,6 +401,7 @@ a.fab{
 }
 
 .AAQtextarea{
+  margin: 20px;
   border-style:hidden;
   border-radius: 20px;
 }

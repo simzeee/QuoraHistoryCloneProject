@@ -7,7 +7,7 @@ block content
                 label(for='content')
                 textarea(name='content', cols='100', rows='10' type='text' class='AAQtextarea' required)= content
             div(class='AAQselectTagDiv')
-                label(for='tag' class='AAQtaglabel') Select tag
+                label(for='tag' class='AAQtaglabel') Select tags
                 select(name='tagIds' multiple)
                     each tag in tags
                         option(name= tag.name value= tag.id )= tag.name
