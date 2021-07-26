@@ -1,26 +1,27 @@
-extends layout.pug 
-block content 
-  
-  fieldset(class='containAll')
+extends layout.pug
+
+block content
+
+  fieldset(class='containAll login')
     include utils.pug
-    div  
+    div
       form(method='post' action='/users/login' class='form')
-        div(class='email') 
-          label Email Address 
-        div(class='input') 
+        div(class='email')
+          label(class='registerText') Email Address
+        div(class='input')
           input(type='text' name='email' id='email-input')
-        div(class='password') 
-          label(class='registerText') Password 
-        div(class='input') 
+        div(class='password')
+          label(class='registerText') Password
+        div(class='input')
           input(type='password' name='password' id='password-input')
-        div(class='input')  
+        div(class='input')
           button(type='submit' class='login-button') Login
           input(type='hidden' name='_csrf' value=csrfToken)
-        div(class='input')  
+        div(class='input')
       form(method='post' action='/users/demoLogin')
-        div(class='input')  
+        div(class='input')
           button(type='submit' class='demo-button') Demo Login
           input(type='hidden' name='_csrf' value=csrfToken)
-        div(class='registerText') 
+        div(class='registerText')
             p: a(href='/users/register' class='registerText') Don't have an account yet?
     script(type='module' src='/javascripts/demoUser.js')
