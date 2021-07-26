@@ -4,10 +4,9 @@
 }
 
 body {
-
-  background-color: rgb(255, 226, 133);
+  background-image: url(../images/constitution-signing.jpg);
   background-repeat: repeat;
-  background-size: 100em 75%;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +80,7 @@ body {
 
 a {
   text-decoration: none;
-  color: black
+  color: black;
 }
 
 .containAll{
@@ -94,6 +93,16 @@ a {
   background-image: url(/images/scroll2.png);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
   background-color: burlywood;
+}
+
+.containAll.login {
+  width: fit-content;
+  padding: 5px 5px;
+  margin-top: 150px;
+}
+
+.containAll.searchResult {
+  padding: 5px 5px;
 }
 
 .opening{
@@ -252,8 +261,7 @@ fieldset {
   justify-content: center;
   width: 32%;
   border-radius: 25px;
-  border:thick double #32a1ce;
-
+  border: 3px solid black;
 }
 
 .email{
@@ -277,7 +285,7 @@ input{
 
 .registerText{
   display: flex;
-  justify-content: center;
+  justify-self: flex-start;
   color: black;
   margin-bottom: 3px;
 }
@@ -309,6 +317,11 @@ input{
 .profileButtons {
   display: flex;
   justify-content: center;
+}
+
+div.email, div.password {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .containProfile{
@@ -343,4 +356,40 @@ div.searchKeyword {
 .searchDiv input {
   border:none;
   margin-bottom: 2%;
+}
+
+.footer{
+  /* position: fixed; */
+  background-color: burlywood;
+  display: flex;
+  flex-direction: row;
+  width: 90em;
+  margin: 0px;
+  padding:0px;
+  bottom:0;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.user-object--avi {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+
+}
+
+.about-links{
+  margin: 5px;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid black;;
+}
+
+a.fab{
+  padding:5px;
+  align-items: center;
+  justify-content: center;
 }
