@@ -80,7 +80,7 @@ body {
 
 a {
   text-decoration: none;
-  color: black
+  color: black;
 }
 
 .containAll{
@@ -340,4 +340,40 @@ div.email, div.password {
 .searchDiv input {
   border:none;
   margin-bottom: 2%;
+}
+
+.footer{
+  /* position: fixed; */
+  background-color: burlywood;
+  display: flex;
+  flex-direction: row;
+  width: 90em;
+  margin: 0px;
+  padding:0px;
+  bottom:0;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.user-object--avi {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  
+}
+
+.about-links{
+  margin: 5px;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid black;;
+}
+
+a.fab{
+  padding:5px;
+  align-items: center;
+  justify-content: center;
 }
