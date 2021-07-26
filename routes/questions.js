@@ -102,7 +102,7 @@ router.get('/:id(\\d+)/edit', csrfProtection, restoreUser, requireAuth, asyncHan
           res.render("index", { title: "Home Page", user, questions, Tags, errors: ['Unable to edit other users\' questions'] });
         } else {
           res.render("index", {
-            title: "Home Page",
+            // title: "Home Page",
             questions,
             Tags,
             csrfToken: req.csrfToken(),
@@ -191,7 +191,7 @@ router.get('/:id(\\d+)/delete', restoreUser,csrfProtection, requireAuth, asyncHa
           const userId = req.session.auth.userId;
           const user = await User.findByPk(userId);
           res.render("index", {
-            title: "Home Page",
+            // title: "Home Page",
             user,
             questions,
             Tags,
@@ -199,7 +199,7 @@ router.get('/:id(\\d+)/delete', restoreUser,csrfProtection, requireAuth, asyncHa
           });
         } else {
           res.render("index", {
-            title: "Home Page",
+            // title: "Home Page",
             questions,
             Tags,
             csrfToken: req.csrfToken(),

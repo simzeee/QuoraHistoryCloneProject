@@ -12,7 +12,8 @@ append head
 block content
 
   div(id='background-images' class='containAll')
-    h2(class='theme') Select Theme
+    div
+      h2(class='theme') Select Theme
     div(id='/images/renaissance.png' class='background-image --clicked') Renaissance
     div(id='/images/dark-ages.jpg' class='background-image' ) Dark Ages
     div(id='/images/ancient.png' class='background-image' ) Ancient
@@ -37,7 +38,7 @@ block content
                 button(type='submit') Search Topics
                 input(type='hidden' name='_csrf' value=csrfToken)
   form(method='post' action='/search/keyword')
-    div
+    div(class="searchDiv")
       input(type='text' name='searchBar' placeholder='Search...')
       button(type='submit') Search Keyword
       input(type='hidden' name='_csrf' value=csrfToken)
@@ -54,9 +55,11 @@ block content
       div(class='opening')
         p(class='greeting') Welcome to QHistory!
       div(class='opening')
-        a(href='/users/register') Register
+        a(href='/users/register')
+          button(type="button") Register
       div(class='opening')
-        a(href='/users/login') Login
+        a(href='/users/login')
+          button(type="button") Login
   div(class='containAll')
     form(method='get' action='/questions')
       div(class='opening')
