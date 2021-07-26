@@ -1,14 +1,19 @@
 extends layout.pug
+
+append head
+  script(src="/javascripts/index.js" type="module" defer)
+
+
 block content
   if questions
-    each question in questions 
-      fieldset(class='containAll')
-        a(href=`/answers/${question.id}`) 
+    each question in questions
+      fieldset(class='containAll searchResult')
+        a(href=`/answers/${question.id}`)
             p= question.content
     div
       form(method='get' action='/')
         button(type='submit') Return to Home
-  else 
+  else
     fieldset(class='containAll')
       p No results found!
     div

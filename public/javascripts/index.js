@@ -30,6 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             const imageURL = image.id;
             document.body.style.background = `url(${imageURL})`;
+            document.body.style.backgroundSize = "contain";
             document.cookie = `currentURL=${imageURL}`;
             image.classList.add('--clicked');
         });
