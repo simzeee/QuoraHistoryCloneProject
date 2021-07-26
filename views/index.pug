@@ -2,7 +2,7 @@ extends layout
 
 append head
   //- add page specific styles by appending to the head
-  
+
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
@@ -13,8 +13,7 @@ block content
 
   div(id='background-images' class='containAll')
     h2(class='theme') Select Theme
-    div(id='/images/scroll2.png' class='background-image --clicked') None
-    div(id='/images/renaissance.png' class='background-image') Renaissance
+    div(id='/images/renaissance.png' class='background-image --clicked') Renaissance
     div(id='/images/dark-ages.jpg' class='background-image' ) Dark Ages
     div(id='/images/ancient.png' class='background-image' ) Ancient
     div(id='/images/enlightenment.png' class='background-image' ) Enlightenment

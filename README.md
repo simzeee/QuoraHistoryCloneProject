@@ -1,6 +1,26 @@
-# Express Project Skeleton
+# Welcome to QHistory
 
-Use this project skeleton as a starting point for structuring your app. Things to note
-* Sequelize configuration has not yet been added -- you will need to set that up yourself
-* You may find yourself wanting to use javascript -- js files can be added in `public/javascripts` and should be appended to the Pug templates as needed
-* CSS files can go in `public/stylesheets` and also will need to be added to Pug templates
+A place to ask and answer history questions.  
+
+
+# Index
+
+ -   [Feature List](https://github.com/jjiiaaLi/QuoraHistoryCloneProject/wiki/MVP-Feature-List)
+-   [Database Schema](https://github.com/jjiiaaLi/QuoraHistoryCloneProject/wiki/database-schema)
+-   [User Stories](https://github.com/jjiiaaLi/QuoraHistoryCloneProject/wiki/user-stories)
+-  [API Documentation](https://github.com/jjiiaaLi/QuoraHistoryCloneProject/wiki/api-documentation)
+-   [Frontend Routes](https://github.com/jjiiaaLi/QuoraHistoryCloneProject/wiki/frontend-routes)
+
+## Take a look
+
+[QHistory](https://qhistory-app.herokuapp.com/)
+[The Repo](https://github.com/jjiiaaLi/QuoraHistoryCloneProject)
+
+## List of Technologies
+
+ - JavaScript
+ - Express
+ - Pug
+ - Sequelize
+ - Heroku
+ - CSS
