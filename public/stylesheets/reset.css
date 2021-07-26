@@ -393,3 +393,28 @@ a.fab{
   align-items: center;
   justify-content: center;
 }
+
+.askAQcontainer{
+  background-color: burlywood;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.AAQtextarea{
+  border-style:hidden;
+  border-radius: 20px;
+}
+.AAQselectTagDiv{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.AAQtaglabel{
+  margin-right: 50px;
+}
+.AAQsubmitnewQ{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}

@@ -2,15 +2,15 @@ extends layout.pug
 block content
     fieldset
         include utils.pug
-        form(method='post' action='/questions')
-            div
+        form(method='post' action='/questions' class='askAQcontainer')
+            div(class='AAQtextareacontainer')
                 label(for='content')
-                textarea(name='content', cols='100', rows='10' type='text' required)= content
-            div
-                label(for='tag') Select tag
+                textarea(name='content', cols='100', rows='10' type='text' class='AAQtextarea' required)= content
+            div(class='AAQselectTagDiv')
+                label(for='tag' class='AAQtaglabel') Select tag
                 select(name='tagIds' multiple)
                     each tag in tags
                         option(name= tag.name value= tag.id )= tag.name
-            div
+            div(class='AAQsubmitnewQ')
                 input(type='hidden' name='_csrf' value= csrfToken)
                 button(type='submit') Submit
