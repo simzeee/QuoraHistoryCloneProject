@@ -41,15 +41,15 @@ body {
 }
 
 .searchContainer{
-  color: black;
+  /* color: black; */
   width: 50%;
   display: flex;
   justify-content: left;
   border-radius: 25px;
   margin-top: 10px;
   margin-left: 10px;
-  background-image: url(/images/scroll2.png);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  /* background-image: url(/images/scroll2.png); */
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24); */
   margin-right: 20%;
 }
 
@@ -109,6 +109,9 @@ a {
   font-size: 20pt;
 }
 
+.titleContainer {
+  margin-left: 2%;
+}
 
 .title {
   font-weight: 550;
@@ -319,4 +322,9 @@ input{
 .searchDiv button {
   margin-top: 5px;
   width: fit-content;
+}
+
+.searchDiv input {
+  border:none;
+  margin-bottom: 2%;
 }
