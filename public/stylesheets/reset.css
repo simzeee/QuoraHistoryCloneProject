@@ -65,15 +65,19 @@ body {
 .searchContainer2{
   width: auto;
   display: flex;
-  justify-content: left;
+  align-items: center;
+  /* justify-content: left; */
   /* align-items: center; */
   margin-top: 10px;
   margin-left: 10px;
   margin-bottom: 10px;
   /* background-color: red; */
+  /* margin: 2px; */
 }
 
-
+.searchContainer2 input {
+  
+}
 
 .searchTagsContainer{
   /* width: auto; */
@@ -85,9 +89,11 @@ body {
 
 .tagSearch {
   /* position: absolute; */
-  width: 100%;
+  width: 60%;
   background-color: burlywood;
   border-radius: 25px;
+  margin-left: 8%;
+  padding-left: 5px;
 }
 
 a {
@@ -159,11 +165,13 @@ a {
 
 .tags {
   color: black;
-  background-color: #d7dcdc;;
+  background-color: #d7dcdc98;;
   border: 2px ridge #e6ebeb;
   /* text-shadow: white 0px 0px 5px; */
   width: auto;
-  border-radius: 5px;
+  /* border-radius: 6px; */
+  padding: 3px 3px 0 3px;
+  font-family: 'Chaparral Pro';
 }
 
 .tagsContainer{
@@ -174,7 +182,6 @@ a {
   margin-top: 15px;
   display: flex;
   justify-content: flex-start;
-  /* border: 4mm ridge rgba(50, 132, 220, 0.6) */
 }
 
 .questionsContainer {
@@ -222,13 +229,14 @@ a {
   margin-right: 10px;
 }
 
-input {
+/* input {
   margin-right: 5px;
   margin-top: 9px;
-}
+} */
 
 .tagLabel{
-  margin-top: 5px;
+  margin-top: 5.5px;
+  padding-left: 5px;
 }
 
 button {
@@ -312,12 +320,10 @@ input{
   margin-left: 50px;
   margin-right: 80%;
   margin-top: 14%;
-  width: 20%;
+  width: 13%;
   height: auto;
-}
-
-.theme{
-  margin-left: 53px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 
@@ -325,10 +331,6 @@ input{
   display: flex;
   justify-content: center;
   cursor: pointer;
-}
-
-.theme{
-  margin-left: 53px;
 }
 
 .profileButtons {
