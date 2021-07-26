@@ -1,4 +1,8 @@
 extends layout.pug
+
+append head
+  script(src="/javascripts/index.js" type="module" defer)
+
 block content
     fieldset
         include utils.pug
