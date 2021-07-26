@@ -38,7 +38,7 @@ block content
                 button(type='submit') Search Topics
                 input(type='hidden' name='_csrf' value=csrfToken)
   form(method='post' action='/search/keyword')
-    div
+    div(class="searchDiv")
       input(type='text' name='searchBar' placeholder='Search...')
       button(type='submit') Search Keyword
       input(type='hidden' name='_csrf' value=csrfToken)
