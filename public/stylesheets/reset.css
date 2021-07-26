@@ -404,6 +404,8 @@ a.fab{
   margin: 20px;
   border-style:hidden;
   border-radius: 20px;
+  max-height: 300px;
+  min-height: 150px;
 }
 .AAQselectTagDiv{
   margin-top: 10px;
