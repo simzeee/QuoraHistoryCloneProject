@@ -10,15 +10,20 @@ block content
 
     include utils.pug
     div(class="containProfile")
-        table
-            thead
-                th User Name
-                th User Email
-            tbody
-                tr
-                    td= user.username
-                    td= user.email
-        div(class="profileButtons")
+        //- table
+        //-     thead
+        //-         th User Name
+        //-         th User Email
+        //-     tbody
+        //-         tr
+        //-             td= user.username
+        //-             td= user.email
+        h2 User Name: 
+            td=user.username
+        h2 User Email: 
+            td=user.email
+        break
+        button(class="profileButtons")
             a(href='/users/editPassword') Edit Password
-        div(class="profileButtons")
-            a(href='/') Return to Home
+
+
