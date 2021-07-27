@@ -101,7 +101,7 @@ a {
 .containAll.login {
   width: fit-content;
   padding: 8px 8px;
-  margin-top: 220px;
+  margin: 220px 0;
   background-image: url(/images/scroll2.png);
   background-size: cover;
   display: flex;
@@ -297,6 +297,11 @@ fieldset {
   border: 3px solid black;
 }
 
+fieldset.newQuestion {
+  margin-top: 100px;
+  margin-bottom: 400px;
+}
+
 .email{
   display: flex;
   justify-content: center;
@@ -442,10 +447,12 @@ a.fab{
 
 .AAQtextarea{
   margin: 20px;
+  padding: 20px;
+  outline: none;
   border-style:hidden;
   border-radius: 20px;
   max-height: 300px;
-  min-height: 150px;
+  min-height: 130px;
 }
 .AAQselectTagDiv{
   margin-top: 10px;
