@@ -11,6 +11,7 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: fantasy;
+  min-width: 500px;
 }
 
 .headerOne {
@@ -40,15 +41,14 @@ body {
 }
 
 .searchContainer{
-  /* color: black; */
-  width: 50%;
+
+  width: 300px;
   display: flex;
   justify-content: left;
   border-radius: 25px;
   margin-top: 10px;
   margin-left: 10px;
-  /* background-image: url(/images/scroll2.png); */
-  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24); */
+
   margin-right: 20%;
 }
 
@@ -61,6 +61,10 @@ body {
   margin-bottom: 10px;
 }
 
+.searchContainer2 > button {
+  justify-self: center;
+}
+
 
 .searchTagsContainer{  font-family: 'Chaparral Pro';
 
@@ -71,7 +75,7 @@ body {
 
 
 .tagSearch {
-  width: 60%;
+  width: 150px;
   background-color: burlywood;
   border-radius: 25px;
   margin-left: 8%;
@@ -90,15 +94,31 @@ a {
   width: 38%;
   margin: 5px;
   border-radius: 25px;
-  /* background-image: url(/images/scroll2.png); */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
   background-color: burlywood;
 }
 
 .containAll.login {
   width: fit-content;
-  padding: 5px 5px;
-  margin-top: 150px;
+  padding: 8px 8px;
+  margin-top: 220px;
+  background-image: url(/images/scroll2.png);
+  background-size: cover;
+  display: flex;
+}
+
+a.registerText {
+  text-decoration: underline;
+  margin-left: 5px;
+}
+
+div.register-button {
+  display: flex;
+  justify-content: center;
+}
+
+button.register-button {
+  margin: 8px 0;
 }
 
 .containAll.searchResult {
@@ -132,6 +152,10 @@ h2.title {
   font-weight: 550;
   align-self: center;
   color: black;
+}
+
+h2.theme {
+  margin-bottom: 10px;
 }
 
 .containAll.welcome {
@@ -253,6 +277,15 @@ button:active {
   margin-right: 2px;
 }
 
+label {
+  font-weight: bold;
+  font-size: 14pt;
+}
+label.tagLabel {
+  font-weight: 100;
+}
+
+
 /* Login Page */
 
 fieldset {
@@ -302,7 +335,8 @@ input{
   margin-left: 50px;
   margin-right: 80%;
   margin-top: 14%;
-  width: 13%;
+  width: 150px;
+  padding: 0 5px;
   height: auto;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -370,6 +404,7 @@ div.searchKeyword {
   flex-direction: row;
   width: 90em;
   margin: 0px;
+  margin-top: 30px;
   padding:0px;
   bottom:0;
   align-items: center;

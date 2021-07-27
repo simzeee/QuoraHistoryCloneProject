@@ -14,7 +14,7 @@ body
             input(type='text' name='searchBar' placeholder='Search QHistory...')
             button(type='submit' class='searchSubmit')
             input(type='hidden' name='_csrf' value=csrfToken)
-      if user
+      if user && user.id
         div(class='viewProfile')
           form(action='/users/userProfile')
             button(type='submit' ) View Profile
@@ -29,7 +29,7 @@ body
             button(type="button") Login
   block content
 
-  footer 
+  footer
     div(class='footer')
-      block footer 
-        //- link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.5.0/css/all.css") 
+      block footer
+        //- link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.5.0/css/all.css")
