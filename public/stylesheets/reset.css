@@ -398,7 +398,6 @@ div.searchKeyword {
 }
 
 .footer{
-  /* position: fixed; */
   background-color: burlywood;
   display: flex;
   flex-direction: row;
