@@ -5,18 +5,31 @@ head
 body
   div(class='headerOne')
     div(class='titleContainer')
-      a(href='/')
+      a(href='/' class='title')
         h2(class='title') QHistory
     div(class='openingLogOut')
-     if user
-      div(class='viewProfile')
-        form(action='/users/userProfile')
-          button(type='submit' ) View Profile
-      form(method='post' action='/users/logout')
-        button(type='submit') Log Out
+      div(class='searchKeyword')
+        form(method='post' action='/search/keyword')
+          div(class="searchDiv")
+            input(type='text' name='searchBar' placeholder='Search QHistory...')
+            button(type='submit' class='searchSubmit')
+            input(type='hidden' name='_csrf' value=csrfToken)
+      if user && user.id
+        div(class='viewProfile')
+          form(action='/users/userProfile')
+            button(type='submit' ) View Profile
+        form(method='post' action='/users/logout')
+          button(type='submit') Log Out
+      else
+        div(class='opening')
+          a(href='/users/register')
+            button(type="button") Register
+        div(class='opening')
+          a(href='/users/login')
+            button(type="button") Login
   block content
 
-  footer 
+  footer
     div(class='footer')
-      block footer 
-        //- link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.5.0/css/all.css") 
+      block footer
+        //- link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.5.0/css/all.css")

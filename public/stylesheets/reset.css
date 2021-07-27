@@ -11,15 +11,16 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: fantasy;
+  min-width: 500px;
 }
 
 .headerOne {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: 100px;
-  margin: 10px;
+  height: 60px;
   background-color: burlywood;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
@@ -40,15 +41,14 @@ body {
 }
 
 .searchContainer{
-  /* color: black; */
-  width: 50%;
+
+  width: 300px;
   display: flex;
   justify-content: left;
   border-radius: 25px;
   margin-top: 10px;
   margin-left: 10px;
-  /* background-image: url(/images/scroll2.png); */
-  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24); */
+
   margin-right: 20%;
 }
 
@@ -61,6 +61,10 @@ body {
   margin-bottom: 10px;
 }
 
+.searchContainer2 > button {
+  justify-self: center;
+}
+
 
 .searchTagsContainer{  font-family: 'Chaparral Pro';
 
@@ -71,7 +75,7 @@ body {
 
 
 .tagSearch {
-  width: 60%;
+  width: 150px;
   background-color: burlywood;
   border-radius: 25px;
   margin-left: 8%;
@@ -97,8 +101,25 @@ a {
 
 .containAll.login {
   width: fit-content;
-  padding: 5px 5px;
-  margin-top: 150px;
+  padding: 8px 8px;
+  margin-top: 220px;
+  background-image: url(/images/scroll2.png);
+  background-size: cover;
+  display: flex;
+}
+
+a.registerText {
+  text-decoration: underline;
+  margin-left: 5px;
+}
+
+div.register-button {
+  display: flex;
+  justify-content: center;
+}
+
+button.register-button {
+  margin: 8px 0;
 }
 
 .containAll.searchResult {
@@ -119,17 +140,27 @@ a {
 }
 
 .titleContainer {
-  margin-left: 2%;
+  margin-left: 8%;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
-.title {
+h2.title {
   font-weight: 550;
   font-family: fantasy;
-  font-size: 40pt;
+  font-size: 30pt;
   font-weight: 550;
-  margin: 10px;
-  margin-bottom: 20px;
+  align-self: center;
   color: black;
+}
+
+h2.theme {
+  margin-bottom: 10px;
+}
+
+.containAll.welcome {
+  margin: 60px 0;
 }
 
 .userNameContainer {
@@ -202,11 +233,15 @@ a {
 
 .openingLogOut{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-right: 10px;
+  width: fit-content;
 }
 
+.openingLogOut > * {
+  margin: 0 8px;
+}
 
 .tagLabel{
   margin-top: 5.5px;
@@ -242,6 +277,15 @@ button:active {
 .tag{
   margin-right: 2px;
 }
+
+label {
+  font-weight: bold;
+  font-size: 14pt;
+}
+label.tagLabel {
+  font-weight: 100;
+}
+
 
 /* Login Page */
 
@@ -292,7 +336,8 @@ input{
   margin-left: 50px;
   margin-right: 80%;
   margin-top: 14%;
-  width: 13%;
+  width: 150px;
+  padding: 0 5px;
   height: auto;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -316,25 +361,36 @@ div.email, div.password {
 
 .containProfile{
   margin-top: 5%;
-  padding: 10px 10px 10px;
+  padding: 20px;
   border-radius: 25px;
   background-image: url(/images/scroll2.png);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
   background-color: burlywood;
-}
-
-.searchDiv {
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px 12px 10px 12px;
-  background-color: burlywood;
-  border-radius: 25px;
+
 }
 
-.searchDiv button {
-  margin-top: 5px;
+button.searchSubmit {
+  background-image: url(../images/search.png);
+  background-size: contain;
+  margin: 0;
+  margin-left: 3px;
+  padding: 0;
+  height: 22px;
+  width: 22px;
+}
+
+div.searchKeyword {
   width: fit-content;
+}
+
+.searchDiv {
+  margin-top: 5px;
+  height: auto;
+  display: flex;
 }
 
 .searchDiv input {
@@ -349,11 +405,12 @@ div.email, div.password {
   flex-direction: row;
   width: 90em;
   margin: 0px;
+  margin-top: 30px;
   padding:0px;
   bottom:0;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .user-object--avi {
@@ -361,7 +418,7 @@ div.email, div.password {
   height: 40px;
   border-radius: 50%;
   align-items: center;
-  
+
 }
 
 .about-links{
@@ -377,6 +434,7 @@ a.fab{
   align-items: center;
   justify-content: center;
 }
+
 
 /* Answers Page */
 
@@ -434,4 +492,31 @@ a.fab{
 
 #postAnswer {
   margin-top: 2%;
+}
+.askAQcontainer{
+  background-color: burlywood;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.AAQtextarea{
+  margin: 20px;
+  border-style:hidden;
+  border-radius: 20px;
+  max-height: 300px;
+  min-height: 150px;
+}
+.AAQselectTagDiv{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.AAQtaglabel{
+  margin-right: 50px;
+}
+.AAQsubmitnewQ{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
 }
