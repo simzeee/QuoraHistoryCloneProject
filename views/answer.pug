@@ -9,10 +9,10 @@ append head
 
 block content
     div(class='errors-container')
-    
+
     div(class='containAll')
         div(class='tagsContainer')
-          
+
         div(class='questionsContainer')
           a(href=`/answers/${question.id}`)
             p(class='home-questions')= question.content
@@ -20,13 +20,13 @@ block content
           div(class='username')
             label(name='username' class='usernameText')= question.User.username
         div(class='buttonsContainer')
-      
+
             form(method='post' action='/answers/upvote/question')
                 span(id='question-upvote-count')= questionUpvote.value
                 input(type='hidden' name='questionId' value=question.id)
                 input(type='hidden' name='userId' value=user.id)
-                button(id=`upvote-${question.id}` type='submit'  class='upvote-question-button') 👍
-        
+                button(id=`upvote-${question.id}` type='submit'  class=`upvote-question-button-${voted}`) 👍
+
 
     fieldset(class='containAll' id='answers')
         h2 Answers:
@@ -40,7 +40,6 @@ block content
                         div(name= answer.User.username class="answerUsername")= answer.User.username
                     div(id=`comments-buttons-${answer.id}`)
                         button(id=`showComments-${answer.id}` class='showComment-button') Show Comments
-                        button(id=`hideComments-${answer.id}` class='hideComment-button --hidden') Hide Comments
                     div(class=`current-comment-container-${answer.id}`)
                     div(class=`new-comment-container-${answer.id}`)
             div
