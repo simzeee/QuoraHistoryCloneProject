@@ -4,7 +4,7 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-    fieldset
+    fieldset(class='newQuestion')
         include utils.pug
         form(method='post' action='/questions' class='askAQcontainer')
             div(class='AAQtextareacontainer')
