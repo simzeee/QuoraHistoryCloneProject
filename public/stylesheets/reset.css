@@ -25,7 +25,7 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
-.searchBar{
+.searchBar {
   display: flex;
   justify-content: center;
   border-radius: 25px;
@@ -36,12 +36,11 @@ body {
   height: auto;
 }
 
-.--clicked{
-  background-color:rgba(136, 131, 131, 0.5);
+.--clicked {
+  background-color: rgba(136, 131, 131, 0.5);
 }
 
-.searchContainer{
-
+.searchContainer {
   width: 300px;
   display: flex;
   justify-content: left;
@@ -52,7 +51,7 @@ body {
   margin-right: 20%;
 }
 
-.searchContainer2{
+.searchContainer2 {
   width: auto;
   display: flex;
   align-items: center;
@@ -65,14 +64,13 @@ body {
   justify-self: center;
 }
 
-
-.searchTagsContainer{  font-family: 'Chaparral Pro';
+.searchTagsContainer {
+  font-family: "Chaparral Pro";
 
   display: flex;
   flex-direction: column;
   background-color: burlywood;
 }
-
 
 .tagSearch {
   width: 150px;
@@ -87,7 +85,7 @@ a {
   color: black;
 }
 
-.containAll{
+.containAll {
   color: black;
   display: flex;
   flex-direction: column;
@@ -126,7 +124,7 @@ button.register-button {
   padding: 5px 5px;
 }
 
-.opening{
+.opening {
   margin: 10px;
   display: flex;
   align-content: center;
@@ -167,15 +165,14 @@ h2.theme {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
-
 }
 
-.usernameText{
+.usernameText {
   font-style: italic;
   margin-right: 20px;
 }
 
-.tagsContainer{
+.tagsContainer {
   margin: 5px;
   width: auto;
   margin-left: 15px;
@@ -186,52 +183,52 @@ h2.theme {
 
 .tags {
   color: rgba(0, 0, 0, 0.767);
-  background-color:rgb(233, 224, 206);
-	border-radius:6px;
+  background-color: rgb(233, 224, 206);
+  border-radius: 6px;
   width: auto;
   padding: 3px 5px 3px 5px;
-  font-family: 'Chaparral Pro';
+  font-family: "Chaparral Pro";
 }
 
 .tags:hover {
-	background:linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
-	background-color:#80b5ea;
+  background: linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
+  background-color: #80b5ea;
 }
 
 .questionsContainer {
   margin-top: 15px;
   margin-left: 10px;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-content: center;
 }
 .home-questions {
   margin: 5px;
   margin-bottom: 20px;
   font-size: 16pt;
-  font-family: 'Chaparral Pro';
+  font-family: "Chaparral Pro";
   color: black;
 }
 
 .userName {
   margin: 5px;
   display: flex;
-  font-family: 'Chaparral Pro';
+  font-family: "Chaparral Pro";
 }
 
-.buttonsContainer{
+.buttonsContainer {
   display: flex;
   justify-content: center;
   margin: 10px;
 }
 
-.viewProfile{
+.viewProfile {
   display: flex;
   justify-content: center;
   margin: 10px;
 }
 
-.openingLogOut{
+.openingLogOut {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -243,38 +240,38 @@ h2.theme {
   margin: 0 8px;
 }
 
-.tagLabel{
+.tagLabel {
   margin-top: 5.5px;
   padding-left: 5px;
 }
 
 button {
-  background-color:rgb(233, 224, 206);
+  background-color: rgb(233, 224, 206);
   /* box-shadow:inset 0px 1px 0px 0px #ffffff; */
-	border-radius:6px;
-	border:none;
-	display:inline-block;
-	cursor:pointer;
-	color:black;
-	font-size:13px;
-	/* font-weight:bold; */
+  border-radius: 6px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+  font-size: 13px;
+  /* font-weight:bold; */
   margin: 2px;
-	padding:3px 5px 3px 5px;
-	text-decoration:none;
-	/* text-shadow:0px 1px 0px #ffffff; */
+  padding: 3px 5px 3px 5px;
+  text-decoration: none;
+  /* text-shadow:0px 1px 0px #ffffff; */
 }
 
 button:hover {
-	background:linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
-	background-color:#80b5ea;
+  background: linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
+  background-color: #80b5ea;
 }
 
 button:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
 
-.tag{
+.tag {
   margin-right: 2px;
 }
 
@@ -285,7 +282,6 @@ label {
 label.tagLabel {
   font-weight: 100;
 }
-
 
 /* Login Page */
 
@@ -303,7 +299,7 @@ fieldset.newQuestion {
   margin-bottom: 400px;
 }
 
-.email{
+.email {
   display: flex;
   justify-content: center;
   color: black;
@@ -311,29 +307,30 @@ fieldset.newQuestion {
   margin: 6px;
 }
 
-.input, .password{
+.input,
+.password {
   display: flex;
   justify-content: center;
   margin: 4px;
 }
 
-input{
+input {
   border-radius: 5px;
   padding: 3px;
 }
 
-.registerText{
+.registerText {
   display: flex;
   justify-self: flex-start;
   color: black;
   margin-bottom: 3px;
 }
 
-.login{
+.login {
   background-color: white;
 }
 
-#background-images{
+#background-images {
   display: flex;
   justify-content: center;
   border-radius: 25px;
@@ -359,13 +356,15 @@ input{
   justify-content: center;
 }
 
-div.email, div.password {
+div.email,
+div.password {
   display: flex;
   justify-content: flex-start;
 }
 
-.containProfile{
-  margin-top: 5%;
+.containProfile {
+  margin-top: 200px;
+  margin-bottom: 400px;
   padding: 20px;
   border-radius: 25px;
   background-image: url(/images/scroll2.png);
@@ -375,7 +374,6 @@ div.email, div.password {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 button.searchSubmit {
@@ -399,23 +397,23 @@ div.searchKeyword {
 }
 
 .searchDiv input {
-  border:none;
+  border: none;
   margin-bottom: 2%;
 }
 
-.footer{
+.footer {
   /* position: fixed; */
   background-color: burlywood;
   display: flex;
   flex-direction: row;
   width: 90em;
   margin: 0px;
-  /* margin-top: 30px; */
-  padding:0px;
-  bottom:0;
+
+  margin-top: 30px;
+  padding: 0px;
+  bottom: 0;
   align-items: center;
   justify-content: center;
-
 }
 
 .user-object--avi {
@@ -423,29 +421,27 @@ div.searchKeyword {
   height: 50px;
   border-radius: 50%;
   align-items: center;
-
 }
 
-.about-links{
+.about-links {
   margin: 5px;
   padding: 5px;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid black;;
+  border-bottom: 2px solid black;
 }
 
-a.fab{
-  padding:5px;
+a.fab {
+  padding: 5px;
   align-items: center;
   justify-content: center;
 }
 
-
 /* Answers Page */
 
 #answers {
- padding: 10px 15px 10px 15px;
- border: none;
+  padding: 10px 15px 10px 15px;
+  border: none;
 }
 
 .answersContainer {
@@ -473,7 +469,7 @@ a.fab{
   background-color: rgba(255, 248, 220, 0.502);
 }
 
-#answerField{
+#answerField {
   max-width: 800px;
   max-height: 300px;
   min-width: 100%;
@@ -498,32 +494,37 @@ a.fab{
 #postAnswer {
   margin-top: 2%;
 }
-.askAQcontainer{
+.askAQcontainer {
   background-color: burlywood;
   overflow: hidden;
   border-radius: 20px;
 }
 
-.AAQtextarea{
+.AAQtextarea {
   margin: 20px;
   padding: 20px;
   outline: none;
-  border-style:hidden;
+  border-style: hidden;
   border-radius: 20px;
   max-height: 300px;
   min-height: 130px;
 }
-.AAQselectTagDiv{
+.AAQselectTagDiv {
   margin-top: 10px;
   display: flex;
   justify-content: center;
 }
-.AAQtaglabel{
+.AAQtaglabel {
   margin-right: 50px;
 }
-.AAQsubmitnewQ{
+.AAQsubmitnewQ {
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
+}
+
+button.upvote-question-button-voted {
+  background: linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
+  background-color: #80b5ea;
 }
