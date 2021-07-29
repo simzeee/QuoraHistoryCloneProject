@@ -44,9 +44,9 @@ block content
                     div(class=`new-comment-container-${answer.id}`)
             div
                 form(method='post' action='/answers')
-                    div
+                    div(class="newAnswer")
                         label(for='content')
-                        textarea(name='content', id="answerField" cols='100', rows='10' type='text' required)
+                        textarea(name='content', id="answerField" class="answer" cols='100', rows='10' type='text' required)
                         input(type="hidden" name='questionId' value= questionId)
                     div(class="buttonsContainer")
                         button(type='submit', id="postAnswer") Post Answer
