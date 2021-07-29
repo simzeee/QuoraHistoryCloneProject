@@ -68,13 +68,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
             );
             json.forEach((comment) => {
               const commentDiv = document.createElement("div");
+              commentDiv.classList.add("commentContent");
               const usernameDiv = document.createElement("div");
+              usernameDiv.classList.add("username");
               const contentDiv = document.createElement("div");
+              contentDiv.classList.add("content");
               usernameDiv.innerHTML = comment.User.username;
               contentDiv.innerHTML = comment.content;
 
-              commentDiv.appendChild(usernameDiv);
               commentDiv.appendChild(contentDiv);
+              commentDiv.appendChild(usernameDiv);
               commentsDiv.appendChild(commentDiv);
             });
           }
