@@ -406,7 +406,7 @@ div.searchKeyword {
   background-color: burlywood;
   display: flex;
   flex-direction: row;
-  width: 90em;
+  width: 100%;
   margin: 0px;
 
   margin-top: 30px;
