@@ -563,3 +563,16 @@ div.newAnswer {
   display: flex;
   justify-content: center;
 }
+
+fieldset#answers {
+  padding: 10px 15px 10px 15px;
+  border: none;
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 150px;
+}
+.questionsContainer.questions {
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
