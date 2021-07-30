@@ -2,6 +2,10 @@ head
     block head
       title="QHistory"
       link(rel='stylesheet' href='/stylesheets/reset.css')
+      <link rel="icon" href="/public/images/favicon.ico">
+      //- link(rel='shortcuticon' href='favicon.ico' type='image/x-icon')
+      //- link(rel='icon' href='favicon.ico' type='image/x-icon')
+      //- <link href='favicon.ico' rel="icon" type="image/x-icon"/>
 body
   div(class='headerOne')
     div(class='titleContainer')
@@ -29,7 +33,23 @@ body
             button(type="button") Login
   block content
 
-  footer
-    div(class='footer')
-      block footer
-        //- link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.5.0/css/all.css")
+
+  block footer
+    div(class='footer') Copyright (c)
+      link(rel='stylesheet' href="https://use.fontawesome.com/releases/v5.5.0/css/all.css")
+      span(class='about-links') Connor Henderson
+        img(class="user-object--avi" src="https://avatars.githubusercontent.com/u/78612354?v=4")
+        a(class="fab fa-github" href="https://github.com/cch41")
+        a(class="fab fa-linkedin" href="https://www.linkedin.com/in/connor-henderson-833504123/")
+      span(class='about-links') Jia Li
+        img(class="user-object--avi" src="https://avatars.githubusercontent.com/u/77854091?v=4")
+        a(class="fab fa-github" href="https://github.com/jjiiaaLi ")
+        a(class="fab fa-linkedin" href="https://www.linkedin.com/in/jia-li-2829b140/")
+      span(class='about-links') John Sims
+        img(class="user-object--avi" src="https://avatars.githubusercontent.com/u/74082034?v=4")
+        a(class="fab fa-github" href="https://github.com/simzeee")
+        a(class="fab fa-linkedin" href="https://www.linkedin.com/in/jwsims/")
+      span(class='about-links') Nick Kury
+        img(class="user-object--avi" src="https://avatars.githubusercontent.com/u/75050631?v=4")
+        a(class="fab fa-github" href="https://github.com/NickKury")
+        a(class="fab fa-linkedin" href="https://www.linkedin.com/in/nick-kury-011840213/")
