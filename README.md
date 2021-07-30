@@ -18,7 +18,10 @@ A place to ask and answer history questions.
 
 QHistory is a full-stack application. Users can post and answer questions about various points in history.  Users can also upvote other user's questions and comment on their answers. For easy navigation questions can be searched based on their topic.  
 
-![](https://github.com/simzeee/QuoraHistoryCloneProject/documentation/home.png)
+
+![](https://github.com/simzeee/QuoraHistoryCloneProject/blob/main/documentation/home.png?raw=true)
+
+![](https://github.com/simzeee/QuoraHistoryCloneProject/blob/main/documentation/question.png?raw=true)
 
 ## List of Technologies
 
@@ -33,7 +36,7 @@ QHistory is a full-stack application. Users can post and answer questions about 
 
 The following code comes from the frontend question route.  This chunk of code gets questions and all of its associated information along with the ability to edit the question.  The question's tags render and the number of upvotes on a question determines the order that the questions render on the homepage.  
 
-![](https://github.com/simzeee/QuoraHistoryCloneProject/documentation/code.png)
+![](https://github.com/simzeee/QuoraHistoryCloneProject/blob/main/documentation/code.png?raw=true)
 
 
 Thank you for reading.
