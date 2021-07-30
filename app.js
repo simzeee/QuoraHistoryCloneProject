@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const { sequelize } = require('./db/models');
 const session = require('express-session');
+const favicon = require('serve-favicon')
 
 
 const answersRouter = require('./routes/answers')
@@ -25,6 +26,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(sessionSecret));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(restoreUser);
+// app.use('/favicon.ico', express.static('public/images/favicon.ico'));
+app.use("/public", express.static('public')); 
+
+// app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+// app.use(favicon(__dirname + '/public/images/favicon.ico'));
+// app.use(express.favicon(path.join(__dirname, 'public','images','favicon.ico'))); 
+
 
 // our routes
 app.use('/', indexRouter);

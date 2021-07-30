@@ -29,7 +29,7 @@ QHistory is a full-stack application. Users can post and answer questions about 
  - Heroku
  - CSS
 
-## Code Snippit
+## Code Snippet
 
 The following code comes from the frontend question route.  This chunk of code gets questions and all of its associated information along with the ability to edit the question.  The question's tags render and the number of upvotes on a question determines the order that the questions render on the homepage.  
 
