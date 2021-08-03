@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const { Op } = require("sequelize");
 router.use(cookieParser());
 const { restoreUser, requireAuth } = require("../auth");
+
 /* GET home page. */
 router.get(
   "/",

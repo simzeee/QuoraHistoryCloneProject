@@ -12,6 +12,7 @@ body {
   align-items: center;
   font-family: fantasy;
   min-width: 500px;
+  /* padding-bottom: 200px; */
 }
 
 .headerOne {
@@ -121,6 +122,7 @@ button.register-button {
 }
 
 .containAll.searchResult {
+  margin-top: 75px;
   padding: 5px 5px;
 }
 
@@ -408,8 +410,9 @@ div.searchKeyword {
   flex-direction: row;
   width: 100%;
   margin: 0px;
+  /* position: absolute; */
 
-  margin-top: 30px;
+  margin-top: 330px;
   padding: 0px;
   bottom: 0;
   align-items: center;
@@ -545,6 +548,10 @@ div.commentContent {
   background-color: rgba(255, 248, 220, 0.502);
 }
 
+.--hidden {
+  display: none !important;
+}
+
 div.username {
   font-style: italic;
   display: flex;
@@ -570,7 +577,7 @@ fieldset#answers {
   width: 800px;
   display: flex;
   justify-content: center;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 /* .containAll.questions {
   margin-top: 100px;
@@ -586,4 +593,8 @@ margin: 100px 5px 40px 5px;
 border-radius: 25px;
 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 background-color: rgb(222, 184, 135);
+}
+
+.searchResultsDiv {
+  margin-bottom: 330px;
 }

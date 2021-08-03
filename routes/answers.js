@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const db = require("../config");
-const { csrfProtection, asyncHandler } = require("./utils");
-const { check, validationResult } = require("express-validator");
+const db = require('../config');
+const { csrfProtection, asyncHandler } = require('./utils');
+const { check, validationResult } = require('express-validator');
 const {
   Tag,
   Answer,
@@ -10,12 +10,12 @@ const {
   Question,
   Comment,
   Upvote,
-} = require("../db/models");
-const { restoreUser, requireAuth } = require("../auth");
+} = require('../db/models');
+const { restoreUser, requireAuth } = require('../auth');
 
 // :id is the question ID
 router.get(
-  "/:id",
+  '/:id',
   restoreUser,
   requireAuth,
   asyncHandler(async (req, res, next) => {
@@ -37,9 +37,9 @@ router.get(
     });
     const questionUpvote = { value: questionUpvotes.length };
     const userVote = await Upvote.findOne({ where: { userId } });
-    let voted = "none";
-    if (userVote) voted = "voted";
-    res.render("answer", {
+    let voted = 'none';
+    if (userVote) voted = 'voted';
+    res.render('answer', {
       question,
       questionId,
       answers,
@@ -52,10 +52,9 @@ router.get(
 
 // :id is the answer ID
 router.get(
-  "/:id/comments",
+  '/:id/comments',
   asyncHandler(async (req, res, next) => {
     const answerId = req.params.id;
-    console.log(answerId);
     const answerComments = await Comment.findAll({
       where: { answerId: answerId },
       include: [User],
@@ -65,15 +64,15 @@ router.get(
 );
 
 const commentValidator = [
-  check("content")
+  check('content')
     .exists()
-    .withMessage("Please provide a comment")
+    .withMessage('Please provide a comment')
     .isLength({ max: 255 })
-    .withMessage("Please provide a comment less than 255 characters"),
+    .withMessage('Please provide a comment less than 255 characters'),
 ];
 
 router.post(
-  "/:id/comments",
+  '/:id/comments',
   restoreUser,
   requireAuth,
   commentValidator,
@@ -86,6 +85,7 @@ router.post(
       const answerId = req.params.id;
       const answer = await Answer.findByPk(answerId, { include: [Question] });
       const questionId = answer.Question.id;
+      console.log('HERE\n\n\n\n');
       const userId = req.session.auth.userId;
 
       await Comment.create({ content, userId, answerId, questionId });
@@ -100,15 +100,15 @@ router.post(
 );
 
 answerValidators = [
-  check("content")
+  check('content')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide an answer.")
+    .withMessage('Please provide an answer.')
     .isLength({ max: 5000 })
-    .withMessage("Please limit answer to 5000 characters"),
+    .withMessage('Please limit answer to 5000 characters'),
 ];
 
 router.post(
-  "/",
+  '/',
   restoreUser,
   requireAuth,
   answerValidators,
@@ -133,7 +133,7 @@ router.post(
 );
 
 router.post(
-  "/upvote/question",
+  '/upvote/question',
   asyncHandler(async (req, res) => {
     const { questionId, userId } = req.body;
     const question = await Question.findByPk(questionId, {
@@ -164,9 +164,9 @@ router.post(
     });
     const questionUpvote = { value: questionUpvotes.length };
     const userVote = await Upvote.findOne({ where: { userId } });
-    let voted = "none";
-    if (userVote) voted = "voted";
-    res.render("answer", {
+    let voted = 'none';
+    if (userVote) voted = 'voted';
+    res.render('answer', {
       question,
       questionId,
       answers,

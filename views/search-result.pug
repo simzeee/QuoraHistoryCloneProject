@@ -10,7 +10,7 @@ block content
       fieldset(class='containAll searchResult')
         a(href=`/answers/${question.id}`)
             p= question.content
-    div
+    div(class='searchResultsDiv')
       form(method='get' action='/')
         button(type='submit') Return to Home
   else

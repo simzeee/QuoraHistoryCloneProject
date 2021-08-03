@@ -40,8 +40,18 @@ block content
                         div(name= answer.User.username class="answerUsername")= answer.User.username
                     div(id=`comments-buttons-${answer.id}`)
                         button(id=`showComments-${answer.id}` class='showComment-button') Show Comments
-                    div(class=`current-comment-container-${answer.id}`)
-                    div(class=`new-comment-container-${answer.id}`)
+                    div(class=`current-comment-container-${answer.id} --hidden` id=`${answer.id}`)
+                        each comment in comments
+                            if comment.answerId === answer.id
+                                div(class="commentContent") 
+                                    div(class="content")= comment.content
+                                    div(class="username")= comment.User.username
+                    div(class=`new-comment-container-${answer.id} --hidden`)
+                        form(method="post" action=`/answers/${answer.id}/comments`)
+                            textarea(name="content")
+                            input(type="hidden")
+                            button(type="submit") Post Comment
+
             div
                 form(method='post' action='/answers')
                     div(class="newAnswer")

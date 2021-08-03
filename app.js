@@ -7,7 +7,7 @@ const logger = require('morgan');
 const { sequelize } = require('./db/models');
 const session = require('express-session');
 const favicon = require('serve-favicon')
-
+const cors = require('cors');
 
 const answersRouter = require('./routes/answers')
 const indexRouter = require('./routes/index');
@@ -28,6 +28,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(restoreUser);
 // app.use('/favicon.ico', express.static('public/images/favicon.ico'));
 app.use("/public", express.static('public')); 
+
+var corsOptions = {
+  origin: 'http://localhost:8080', 
+  optionsSuccessStatus: 200 // For legacy browser support
+}
+app.use(cors(corsOptions));
 
 // app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 // app.use(favicon(__dirname + '/public/images/favicon.ico'));
