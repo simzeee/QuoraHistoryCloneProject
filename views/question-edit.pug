@@ -1,16 +1,16 @@
 extends layout.pug
 block content
-    fieldset
+    fieldset(class="newQuestion")
         include utils.pug
-        form(method='post' action=`/questions/${question.id}/edit`)
-            div
+        form(class="askAQcontainer" method='post' action=`/questions/${question.id}/edit`)
+            div(class="AAQtextareacontainer")
                 label(for='content')
-                textarea(name='content', cols='100', rows='10' type='text' required)= question.content
-            div
-                label(for='tag') Select tag
+                textarea(class="AAQtextarea" name='content', cols='100', rows='10' type='text' required)= question.content
+            div(class="AAQselectTagDiv")
+                label(class="AAQtaglabel" for='tag') Select tag
                 select(name='tagIds' multiple)
                     each tag in tags
                         option(name= tag.name value= tag.id )= tag.name
-            div
+            div(class="AAQsubmitnewQ")
                 input(type='hidden' name='_csrf' value= csrfToken)
                 button(type='submit') Submit
