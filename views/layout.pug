@@ -10,12 +10,12 @@ body
       a(href='/' class='title')
         h2(class='title') QHistory
     div(class='openingLogOut')
-      div(class='searchKeyword')
-        form(method='post' action='/search/keyword')
-          div(class="searchDiv")
-            input(type='text' name='searchBar' placeholder='Search QHistory...')
-            button(type='submit' class='searchSubmit')
-            input(type='hidden' name='_csrf' value=csrfToken)
+      //- div(class='searchKeyword')
+      //-   form(method='post' action='/search/keyword')
+      //-     div(class="searchDiv")
+      //-       input(type='text' name='searchBar' placeholder='Search QHistory...')
+      //-       button(type='submit' class='searchSubmit')
+      //-       input(type='hidden' name='_csrf' value=csrfToken)
       if user && user.id
         div(class='viewProfile')
           form(action='/users/userProfile')
